@@ -4,6 +4,7 @@
 
 
 ### Overview
+(TBC)  
 This package helps you extract and analyse lyrics like a piece of cake!   
 
 
@@ -13,13 +14,13 @@ This package helps you extract and analyse lyrics like a piece of cake!
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
 | download_data | `url`, `cols` | cols | Download csv file from `url` and extract `cols` into a Pandas DataFrame with `cols` name|
-| extract_lyrics | song_title, artist | String | Extract song lyrics of `song_title` by `artist`  |
-| clear_text | paragraph, vocabs | String |  Clean the paragraph with provided `vocabs` |
-| plot_cloud | song_titles, artists | Word Cloud | Show word cloud of lyrics of input `song_titles` and `artists` |
+| extract_lyrics | `song_title`, `artist` | String | Extract song lyrics of `song_title` by `artist`  |
+| clear_text | `paragraph`, `vocabs` | String |  Clean the `paragraph` with provided `vocabs` |
+| plot_cloud | `song_titles`, `artists` | Word Cloud | Show word cloud of lyrics of input `song_titles` and `artists` |
 
 
 ### Our Package in the Python Ecosystem
-TBC
+(TBC)  
 [a paragraph describing where your packages fit into the Python ecosystem (are there any other Python packages that have the same/similar functionality? Provide links to any that do. If none exist, then clearly state this as well).]
 
 
@@ -53,6 +54,7 @@ Output : A WordCloud
 
 
 ### Dependencies
+(TBC)  
 - python = ^3.9
 - pandas = ^1.2.3
 - regex = ^2020.11.13
@@ -89,13 +91,3 @@ We welcome and recognize all contributions. Check out the contributing guideline
 ### Credits
 
 `pylyrics` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
-
-
-
-
-
-
-## Summary
-This package helps you extract and analyse lyrics like a piece of cake!
-[a summary paragraph that describes the project at a high level]
-
