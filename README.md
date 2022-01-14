@@ -16,10 +16,10 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| download_data | `kaggle dataset`, `filepath`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
-| extract_lyrics | `song_title`, `artist` | Pandas Dataframe | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `lyrics`, `vocabs` | String |  Cleans up the `lyrics` with provided `vocabs`, English stop words and characters |
-| plot_cloud | `song_title`, `artist` | Figure | Creates a word cloud of most occuring words of a song/songs `song_title` by an `artist` |
+| download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset `dataset` from kaggle and extract `columns` from csv file |
+| extract_lyrics | `token`, `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` using `token` |
+| clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
+| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
 
 ### Our Package in the Python Ecosystem
@@ -40,9 +40,9 @@ The pylyrics packages contains the following four functions:
 
 1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
-2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
+2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves as String.
 
-3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes special characters, html tags, #tags, contaction words to get a cleaned paragraph. 
 
 4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
