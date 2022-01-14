@@ -42,7 +42,13 @@ def get_lyrics_from_Genius(genius, title, artist):
     ----------
     lyrics : dict
         return dictionary with keys: title, artist and lyrics
+
+    Example
+    -------
+    >>> get_lyrics_from_Genius(genius, "22", "Taylor Swift")
+    >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
     """
+
     with HiddenPrints():
         song = genius.search_song(title, artist)
         if song:
@@ -67,6 +73,12 @@ def extract_lyrics(token, song_title, artist):
     ----------
     songs : dataframe
         Return lyrics of song with three columns: song_title, artist and lyrics
+
+    Example
+    -------
+    >>> extract_lyrics("I-AM-TOKEN", "22", "Taylor Swift"):
+    >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
+
     """
     try:
         genius = lyricsgenius.Genius(token, retries=5)
@@ -79,8 +91,6 @@ def extract_lyrics(token, song_title, artist):
                 "Invalid column type, song title and artist have to be strings"
             )
 
-        # print("Checking URL connection...")
-
         lyrics = get_lyrics_from_Genius(
             genius,
             song_title,
@@ -88,13 +98,7 @@ def extract_lyrics(token, song_title, artist):
         )
 
         if lyrics:
-            # songs = {}
-            # songs["song_title"] = song_title
-            # songs["artist"] = artist
-            # songs["lyrics"] = lyrics
             return lyrics
-
-        # return songs
 
     except Exception as req:
         print(req)
