@@ -42,7 +42,7 @@ def plot_cloud(
     Example
     -------
     >>> from pylyrics.pylyrics import plot_cloud
-    >>> plot_cloud(song,file_path,max_font_size, max_words, background_color, show)
+    >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black', show=True)
 
     """
 
