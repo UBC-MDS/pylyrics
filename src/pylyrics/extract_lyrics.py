@@ -1,5 +1,5 @@
-# author: Macy Chan
-# date: 2022-01-14
+# Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
+# Date: 2022-01-14
 
 import requests
 import os, sys
