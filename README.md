@@ -32,9 +32,13 @@ $ pip install pylyrics
 
 ### Features
 The pylyrics packages contains the following four functions:
+
 1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
+
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
+
 3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+
 4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
 
