@@ -40,8 +40,8 @@ def get_lyrics_from_Genius(genius, title, artist):
 
     Returns
     ----------
-    lyrics : string
-        lyrics of song
+    lyrics : dict
+        return dictionary with keys: title, artist and lyrics
     """
     with HiddenPrints():
         song = genius.search_song(title, artist)
@@ -50,14 +50,16 @@ def get_lyrics_from_Genius(genius, title, artist):
             return lyrics
 
 
-def extract_lyrics(token, songs):
+def extract_lyrics(token, song_title, artist):
     """
-    Extracting lyrics for a maximum of 5 songs
+    Extracting lyrics for a song
 
     Parameters
     ----------
-    songs : dataframe
-        A dataframe consists two columns: song_title and artist
+    song_title : string
+        Title of the song
+    artist : string
+        Artist of the song
     token : string
         A token from Genius for asccessing lyrics
 
@@ -69,39 +71,27 @@ def extract_lyrics(token, songs):
     try:
         genius = lyricsgenius.Genius(token, retries=5)
 
-        if songs.empty:
-            raise ValueError("Empty DataFrame")
+        if song_title == "" or artist == "":
+            raise ValueError("Empty input")
 
-        if len(songs) > 5:
-            raise ValueError("Only accept song lists short than 5 songs or below")
-
-        if not ("song_title" in songs and "artist" in songs):
+        if not (type(song_title) == str and type(artist) == str):
             raise ValueError(
-                "Invalid column names, please provide song_title and artist"
+                "Invalid column type, song title and artist have to be strings"
             )
-
-        if not (
-            songs["song_title"].dtypes == "object"
-            and songs["artist"].dtypes == "object"
-        ):
-            raise ValueError(
-                "Invalid column names, please provide song_title and artist"
-            )
-
-        songs["lyrics"] = ""
 
         print("Checking URL connection...")
-        with alive_bar(len(songs), bar="bubbles", spinner="notes2") as bar:
-            for i in range(len(songs)):
-                lyrics = get_lyrics_from_Genius(
-                    genius,
-                    songs.iloc[i]["song_title"],
-                    songs.iloc[i]["artist"],
-                )
 
-                if lyrics:
-                    songs["lyrics"][i] = lyrics
-                bar()
+        lyrics = get_lyrics_from_Genius(
+            genius,
+            song_title,
+            artist,
+        )
+
+        if lyrics:
+            songs = {}
+            songs["song_title"] = song_title
+            songs["artist"] = artist
+            songs["lyrics"] = lyrics
 
         return songs
 
@@ -109,7 +99,8 @@ def extract_lyrics(token, songs):
         print(req)
 
 
-""" --For later milestones
+"""
+## --For later milestones
 # test
 # /data/credentials.json
 # {
@@ -121,99 +112,19 @@ with open("data/credentials.json") as f:
 token = login["token"]
 
 # Case 1 - happy case
-df_happy = pd.DataFrame(
-    {
-        "song_title": ["22", "POV"],
-        "artist": ["Taylor Swift", "Ariana Grande"],
-    }
-)
+arr_happy = ["22", "Taylor Swift"]
 
 # Case 2 - empty dataframe
-df_edge1 = pd.DataFrame(
-    {
-        "song_title": [],
-        "artist": [],
-    }
-)
+arr_edge1 = ["", "Taylor Swift"]
 
-# Case 3 - six row
-df_edge2 = pd.DataFrame(
-    {
-        "song_title": [
-            "22",
-            "POV",
-            "Easy On Me",
-            "abcdefu",
-            "Ghost",
-            "All Too Well",
-            "Bad Habit",
-        ],
-        "artist": [
-            "Taylor Swift",
-            "Ariana Grande",
-            "Adele",
-            "GAYLE",
-            "Justin Bieber",
-            "Taylor Swift",
-            "Ed Sheeran",
-        ],
-    }
-)
+# Case 3 - Wrong types
+arr_wrong_type = [22, "Taylor Swift"]
 
-# Case 4 - Extra columns
-df_extra_cols = pd.DataFrame(
-    {
-        "song_title": ["22", "POV"],
-        "artist": ["Taylor Swift", "Ariana Grande"],
-        "popularity": [999, 100],
-    }
-)
-
-# Case 5 - Missing columns
-df_missing_cols = pd.DataFrame(
-    {
-        "artist": ["Taylor Swift", "Ariana Grande"],
-    }
-)
-
-# Case 6 - Wrong columns name
-df_wrong_name = pd.DataFrame(
-    {
-        "song_title_1": ["22", "POV"],
-        "artist": ["Taylor Swift", "Ariana Grande"],
-    }
-)
-
-# Case 7 - Wrong column types
-df_wrong_type = pd.DataFrame(
-    {
-        "song_title": [22, 3435],
-        "artist": ["Taylor Swift", "Ariana Grande"],
-    }
-)
-
-# Case 8 - Invalid Song name
-df_invalid = pd.DataFrame(
-    {
-        "song_title": ["AAAA", "A"],
-        "artist": ["AAA", "AAA"],
-    }
-)
 
 print("1 - Happy:")
-print(extract_lyrics(token, df_happy), "\n")
+print(extract_lyrics(token, arr_happy[0], arr_happy[1]), "\n")
 print("2 - Empty:")
-print(extract_lyrics(token, df_edge1), "\n")
-print("3 - Six inputs:")
-print(extract_lyrics(token, df_edge2), "\n")
-print("4 - Extra columns:")
-print(extract_lyrics(token, df_extra_cols), "\n")
-print("5 - Missing columns:")
-print(extract_lyrics(token, df_missing_cols), "\n")
-print("6 - Wrong columns name:")
-print(extract_lyrics(token, df_wrong_name), "\n")
+print(extract_lyrics(token, arr_edge1[0], arr_edge1[1]), "\n")
 print("7 - Wrong column types:")
-print(extract_lyrics(token, df_wrong_type), "\n")
-print("8 - Invalid:")
-print(extract_lyrics(token, df_invalid), "\n")
+print(extract_lyrics(token, arr_wrong_type[0], arr_wrong_type[1]), "\n")
 """
