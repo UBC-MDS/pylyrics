@@ -38,7 +38,7 @@ $ pip install pylyrics
 ### Features
 The pylyrics packages contains the following four functions:
 
-1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
+1. `download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves as String.
 
