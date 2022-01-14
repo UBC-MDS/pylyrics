@@ -13,10 +13,10 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| download_data | `kaggle dataset`, `filepath`, `columns` | cols | Download dataset from `kaggle dataset` and extract `columns` from csv file into a Pandas DataFrame |
-| extract_lyrics | `song_title`, `artist` | String | Extract song lyrics of `song_title` by `artist`  |
-| clear_text | `paragraph`, `vocabs` | String |  Clean up the `paragraph` with provided `vocabs` |
-| plot_cloud | `song_titles`, `artists` | figure | Show word cloud of lyrics of input `song_titles` and `artists` |
+| download_data | `kaggle dataset`, `filepath`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
+| extract_lyrics | `song_title`, `artist` | Pandas Dataframe | Extracts song lyrics of a song `song_title` by `artist` |
+| clean_text | `lyrics`, `vocabs` | String |  Cleans up the `lyrics` with provided `vocabs`, English stop words and characters |
+| plot_cloud | `song_title`, `artist` | Figure | Creates a word cloud of most occuring words of a song/songs `song_title` by an `artist` |
 
 
 ### Our Package in the Python Ecosystem
