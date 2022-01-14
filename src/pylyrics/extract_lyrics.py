@@ -79,7 +79,7 @@ def extract_lyrics(token, song_title, artist):
                 "Invalid column type, song title and artist have to be strings"
             )
 
-        print("Checking URL connection...")
+        # print("Checking URL connection...")
 
         lyrics = get_lyrics_from_Genius(
             genius,
@@ -88,12 +88,13 @@ def extract_lyrics(token, song_title, artist):
         )
 
         if lyrics:
-            songs = {}
-            songs["song_title"] = song_title
-            songs["artist"] = artist
-            songs["lyrics"] = lyrics
+            # songs = {}
+            # songs["song_title"] = song_title
+            # songs["artist"] = artist
+            # songs["lyrics"] = lyrics
+            return lyrics
 
-        return songs
+        # return songs
 
     except Exception as req:
         print(req)
