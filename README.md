@@ -31,26 +31,15 @@ $ pip install pylyrics
 ```
 
 ### Features
-(TBC)  
-1.Download the data
-Input : url (csv) & col you wanna extract
-Output : DataFrame with input cols
+The pylyrics packages contains the following four functions:
 
-2. Extract lyrics from API
-Input : song_title[0], artist[0]
-Output : lyrics
+1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
-3. Clear text
-Input : paragraph, list[voacb]
-Output : cleaned paragraph
+2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
-4. Plot WordCloud
-Input: song_title[], artist[]
-Const: Min 1; Max 5
-make use of (2) & (3)
-Output : A WordCloud
+3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
 
-[a bulleted list of the functions (and datasets if applicable) that will be included in the package (this should be a 1-2 sentence description for each function/dataset)]
+4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
 
 ### Dependencies
