@@ -21,7 +21,7 @@ def plot_cloud(
 
     Parameters
     ----------
-    song: python dictionary
+    song: dictionary
         with artist as dictionary key and song_title as value. Both key and value are strings.
     file_path: str
         The location to save the file
@@ -41,7 +41,7 @@ def plot_cloud(
 
     Example
     -------
-    >>> from pylyrics import plot_cloud
+    >>> from pylyrics.pylyrics import plot_cloud
     >>> plot_cloud(song,file_path,max_font_size, max_words, background_color, show)
 
     """
@@ -50,9 +50,9 @@ def plot_cloud(
 
     text = ""
     # Create a string of all song lyrics
-    for artist, song_title in song:
+    for artist, song_title in song.items():
         raw_lyrics = extract_lyrics(artist, song_title)
-        clean_lyrics = clean_text(raw_lyrics, vocabs)  # what is vocabs _ add to input
+        clean_lyrics = clean_text(text=raw_lyrics)
         text += " " + clean_lyrics  # Adding space for the end of lyrics
 
     # plot the wordcloud
