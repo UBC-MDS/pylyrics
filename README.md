@@ -1,12 +1,12 @@
-# Python package for extract and analyse lyrics  
+# Pylyrics  
+A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 
 <br>
 
 ### Overview
-(TBC)  
-This package helps you extract and analyse lyrics like a piece of cake!   
+This package allows users to extract and analyze lyrics effortlessly. With pylrics users can download songs attribute datasets from Kaggle, extract lyrics and generate a word cloud. 
 
 <br>
 
@@ -16,10 +16,10 @@ This package helps you extract and analyse lyrics like a piece of cake!
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| download_data | `url`, `cols` | cols | Download csv file from `url` and extract `cols` into a Pandas DataFrame with `cols` name|
-| extract_lyrics | `song_title`, `artist` | String | Extract song lyrics of `song_title` by `artist`  |
-| clear_text | `paragraph`, `vocabs` | String |  Clean the `paragraph` with provided `vocabs` |
-| plot_cloud | `song_titles`, `artists` | Word Cloud | Show word cloud of lyrics of input `song_titles` and `artists` |
+| download_data | `kaggle dataset`, `filepath`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
+| extract_lyrics | `song_title`, `artist` | Pandas Dataframe | Extracts song lyrics of a song `song_title` by `artist` |
+| clean_text | `lyrics`, `vocabs` | String |  Cleans up the `lyrics` with provided `vocabs`, English stop words and characters |
+| plot_cloud | `song_title`, `artist` | Figure | Creates a word cloud of most occuring words of a song/songs `song_title` by an `artist` |
 
 
 ### Our Package in the Python Ecosystem
@@ -36,27 +36,15 @@ $ pip install pylyrics
 <br>
 
 ### Features
----
-(TBC)  
-1.Download the data
-Input : url (csv) & col you wanna extract
-Output : DataFrame with input cols
+The pylyrics packages contains the following four functions:
 
-2. Extract lyrics from API
-Input : song_title[0], artist[0]
-Output : lyrics
+1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
-3. Clear text
-Input : paragraph, list[voacb]
-Output : cleaned paragraph
+2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
-4. Plot WordCloud
-Input: song_title[], artist[]
-Const: Min 1; Max 5
-make use of (2) & (3)
-Output : A WordCloud
+3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
 
-[a bulleted list of the functions (and datasets if applicable) that will be included in the package (this should be a 1-2 sentence description for each function/dataset)]
+4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
 <br>
 
