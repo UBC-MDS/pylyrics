@@ -67,7 +67,7 @@ The pylyrics packages contains the following four functions:
 #### Downloading and Selecting
 The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `cols` argument. 
 
-To use the Kaggle API, sign up for a Kaggle account at https://www.kaggle.com. Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
+To use the Kaggle API, sign up for a Kaggle account at https:/www.kaggle.com. Then go to the 'Account' tab of your user profile (https:/www.kaggle.com/\<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
 ```python 
 from pylyrics import download_data
@@ -84,7 +84,7 @@ from pylyrics import extract_lyrics
 raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
 ```
 #### Cleaning
-Our `clean_text()` function is straightforward and powerful tool. It turns the ...
+Our `clean_text()` function is straightforward tool to clean the input data and make the text human-readable.
 ```python 
 from pylyrics import clean_text
 # Clean the extracted raw lyrics (paragraph)
