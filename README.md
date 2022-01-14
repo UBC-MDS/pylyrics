@@ -1,6 +1,6 @@
 # Python package for extract and analyse lyrics  
 
--   Author: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
+-   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 
 
 ### Overview
@@ -54,15 +54,16 @@ Output : A WordCloud
 
 
 ### Dependencies
-(TBC)  
 - python = ^3.9
 - pandas = ^1.2.3
-- regex = ^2020.11.13
+- regex
+- kaggle
 - json
 - urllib.parse
 - lyricsgenius
-- tqdm.notebook 
-
+- alive_progress
+- wordcloud
+- matplotlib
 
 ### Usage
 (TBC)
