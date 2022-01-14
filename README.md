@@ -16,10 +16,10 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| download_data | `kaggle dataset`, `filepath`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
-| extract_lyrics | `song_title`, `artist` | Pandas Dataframe | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `lyrics`, `vocabs` | String |  Cleans up the `lyrics` with provided `vocabs`, English stop words and characters |
-| plot_cloud | `song_title`, `artist` | Figure | Creates a word cloud of most occuring words of a song/songs `song_title` by an `artist` |
+| download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset `dataset` from kaggle and extract `columns` from csv file |
+| extract_lyrics | `token`, `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` using `token` |
+| clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
+| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
 
 ### Our Package in the Python Ecosystem
@@ -36,11 +36,11 @@ $ pip install pylyrics
 ### Features
 The pylyrics packages contains the following four functions:
 
-1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
+1. `download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
-2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
+2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves as String.
 
-3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes special characters, html tags, #tags, contaction words to get a cleaned paragraph. 
 
 4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
@@ -65,7 +65,7 @@ The pylyrics packages contains the following four functions:
 #### Downloading and Selecting
 The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `cols` argument. 
 
-To use the Kaggle API, sign up for a Kaggle account at https://www.kaggle.com. Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
+To use the Kaggle API, sign up for a Kaggle account at https:/www.kaggle.com. Then go to the 'Account' tab of your user profile (https:/www.kaggle.com/\<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
 ```python 
 from pylyrics import download_data
@@ -82,7 +82,7 @@ from pylyrics import extract_lyrics
 raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
 ```
 #### Cleaning
-Our `clean_text()` function is straightforward and powerful tool. It turns the ...
+Our `clean_text()` function is straightforward tool to clean the input data and make the text human-readable.
 ```python 
 from pylyrics import clean_text
 # Clean the extracted raw lyrics (paragraph)
