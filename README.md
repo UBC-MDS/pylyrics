@@ -3,13 +3,16 @@ A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 
+<br>
 
 ### Overview
 This package allows users to extract and analyze lyrics effortlessly. With pylrics users can download songs attribute datasets from Kaggle, extract lyrics and generate a word cloud. 
 
-
+<br>
 
 ### Functions
+---
+<br>
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
@@ -20,15 +23,17 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 
 ### Our Package in the Python Ecosystem
+---
 There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are the two examples that come close: https://github.com/lorenza12/Cloud-Lyrics and https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4
 
 
 
 ### Installation
-
+---
 ```bash
 $ pip install pylyrics
 ```
+<br>
 
 ### Features
 The pylyrics packages contains the following four functions:
@@ -41,8 +46,10 @@ The pylyrics packages contains the following four functions:
 
 4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
+<br>
 
 ### Dependencies
+---
 - python = ^3.9
 - pandas = ^1.2.3
 - regex
@@ -52,17 +59,58 @@ The pylyrics packages contains the following four functions:
 - lyricsgenius
 - alive_progress
 - wordcloud
-- matplotlib
+- matplotlib  
+<br>
 
 ### Usage
-(TBC)
+---
+#### Downloading and Selecting
+The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `cols` argument. 
 
+To use the Kaggle API, sign up for a Kaggle account at https://www.kaggle.com. Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
+  
+```python 
+from pylyrics import download_data
+# Example dataset: Spotify Song Attributes  
+dataset = "geomack/spotifyclassification"
+# Extract columns 
+df_columns = pylyrics.download_data(dataset, cols=['energy', 'liveness'])
+```
+#### Extracting Lyrics
+The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
+```python 
+from pylyrics import extract_lyrics
+# extracting lyrics 
+raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
+```
+#### Cleaning
+Our `clean_text()` function is straightforward and powerful tool. It turns the ...
+```python 
+from pylyrics import clean_text
+# Clean the extracted raw lyrics (paragraph)
+clean_lyrics = pylyrics.clean_text(paragraph, vocabs)
+```
+
+#### Creating WordCloud
+WordCloud is an artistic rendering of the most frequent words in a text document. A higher occurrence for a word is translated into a larger text size.  
+At this stage, we have helper functions to facilitate the extraction and cleaning of lyrics. The `plot_cloud()` function accepts a **dictionary** with `artist` as dictionary key and `song_title` as values. It will then extract the lyrics for all songs in the dictionary and saves a WordCould of the most occurring terms in the `file_path` provided by the user. You may specify if you want to see the output plot by setting `show=True`. The WordClould parameters to be set are self-explanatory: `max_font_size`, `max_word` and `background_color`.
+```python 
+from pylyrics import plot_cloud
+# plotting and saving WordCloud
+pylyrics.plot_cloud(song,
+    file_path, max_font_size=30, max_words=120, background_color="black", show=False)
+```
+
+<br>
 
 ### Documentation
-
+---
 The official documentation is hosted on Read the Docs: [Link TBC]
 
+<br>
+
 ## Contributors
+---
 The names of core development team is listed below.
 
 | Name |
