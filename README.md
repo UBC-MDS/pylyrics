@@ -1,11 +1,11 @@
-# Python package for extract and analyse lyrics  
+# Pylyrics  
+A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 
 
 ### Overview
-(TBC)  
-This package helps you extract and analyse lyrics like a piece of cake!   
+This package allows users to extract and analyze lyrics effortlessly. With pylrics users can download songs attribute datasets from Kaggle, extract lyrics and generate a word cloud. 
 
 
 
