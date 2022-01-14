@@ -113,12 +113,12 @@ The official documentation is hosted on Read the Docs: [Link TBC]
 ---
 The names of core development team is listed below.
 
-| Name |
-|------|
-| Abhiket Gaurav |  
-| Artan Zandian | 
-| Macy Chan | 
-| Manju Abhinandana Kumar |  
+|           Name          |
+|:-----------------------:|
+|      Abhiket Gaurav     |
+|      Artan Zandian      |
+|        Macy Chan        |
+| Manju Abhinandana Kumar |
 
 We welcome and recognize all contributions. Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
