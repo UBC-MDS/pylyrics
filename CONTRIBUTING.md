@@ -21,7 +21,7 @@ New code should follow the PEP8 style guide.
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
 
 ### Attribution
-These contributing guidelines are adapted from the [Attribution] (https://www.contributor-covenant.org/version/1/0/0/code-of-conduct/)
+These contributing guidelines are adapted from the [Attribution](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct/)
 
 # Contacts:
 
