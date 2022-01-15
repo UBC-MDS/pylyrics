@@ -16,17 +16,18 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| download_data | `kaggle dataset`, `filepath`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
-| extract_lyrics | `song_title`, `artist` | Pandas Dataframe | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `lyrics`, `vocabs` | String |  Cleans up the `lyrics` with provided `vocabs`, English stop words and characters |
-| plot_cloud | `song_title`, `artist` | Figure | Creates a word cloud of most occuring words of a song/songs `song_title` by an `artist` |
+| download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
+| extract_lyrics | `token`, `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` using `token` |
+| clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
+| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
+<br>
 
 ### Our Package in the Python Ecosystem
 ---
 There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are the two examples that come close: [Cloud-Lyrics](https://github.com/lorenza12/Cloud-Lyrics) and [deezer.io](https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4)
 
-
+<br>
 
 ### Installation
 ---
@@ -36,15 +37,16 @@ $ pip install pylyrics
 <br>
 
 ### Features
+---
 The pylyrics packages contains the following four functions:
 
 1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
-3. `clean_text()` The lyrics extracted from extract_lyrics() are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+3. `clean_text()` The lyrics extracted from `extract_lyrics()` are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
 
-4. `plot_cloud` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
+4. `plot_cloud()` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
 <br>
 
@@ -67,7 +69,7 @@ The pylyrics packages contains the following four functions:
 #### Downloading and Selecting
 The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `cols` argument. 
 
-To use the Kaggle API, sign up for a Kaggle account at https://www.kaggle.com. Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
+To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggle.com). Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
 ```python 
 from pylyrics import download_data
@@ -113,12 +115,12 @@ The official documentation is hosted on Read the Docs: [Link TBC]
 ---
 The names of core development team is listed below.
 
-|           Name          |
-|:-----------------------:|
-|      Abhiket Gaurav     |
-|      Artan Zandian      |
-|        Macy Chan        |
-| Manju Abhinandana Kumar |
+|           Name          |   GitHub Handle   |
+|:-----------------------:|:-----------------:|
+|      Abhiket Gaurav     |      abhiket      |
+|      Artan Zandian      |     artanzand     |
+|        Macy Chan        |      macychan     |
+| Manju Abhinandana Kumar | manju-abhinandana |
 
 We welcome and recognize all contributions. Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
