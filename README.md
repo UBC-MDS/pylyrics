@@ -38,9 +38,9 @@ $ pip install pylyrics
 
 ### Features
 ---
-The pylyrics packages contains the following four functions:
+The pylyrics packages contains the following four functions:  
 
-1.`download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
+1. `download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
@@ -80,17 +80,18 @@ df_columns = pylyrics.download_data(dataset, cols=['energy', 'liveness'])
 ```
 #### Extracting Lyrics
 The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
+To obtain the lyris from Genius, you need to create an account on [Genius API](https://docs.genius.com), you can see your token in any tab under resource.
 ```python 
 from pylyrics import extract_lyrics
 # extracting lyrics 
-raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
+raw_lyrics = pylyrics.extract_lyrics(token, song_title, artist)
 ```
 #### Cleaning
-Our `clean_text()` function is straightforward and powerful tool. It turns the ...
+Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
 ```python 
 from pylyrics import clean_text
-# Clean the extracted raw lyrics (paragraph)
-clean_lyrics = pylyrics.clean_text(paragraph, vocabs)
+# Clean the extracted raw lyrics (text)
+clean_lyrics = pylyrics.clean_text(text)
 ```
 
 #### Creating WordCloud
