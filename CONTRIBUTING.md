@@ -25,8 +25,8 @@ These contributing guidelines are adapted from the [Attribution](https://www.con
 
 # Contacts:
 
-1. [Abhiket Gaurav](p12abhiketg@iimidr.ac.in)
-2. [Artan Zandian](artanzand@yahoo.co.uk)
-3. [Manju Abhinandana Kumar](manju.abhinandana@gmail.com)
-4. [Macy Chan](macy2122@hotmail.com)
+1. [Abhiket Gaurav](mailto:p12abhiketg@iimidr.ac.in)
+2. [Artan Zandian](mailto:artanzand@yahoo.co.uk)
+3. [Manju Abhinandana Kumar](mailto:manju.abhinandana@gmail.com)
+4. [Macy Chan](mailto:macychan@student.ubc.ca)
 
