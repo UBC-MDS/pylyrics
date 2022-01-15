@@ -83,14 +83,14 @@ The `extract_lyrics()` function gets the `song_title` and `artist` name, checks 
 ```python 
 from pylyrics import extract_lyrics
 # extracting lyrics 
-raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
+raw_lyrics = pylyrics.extract_lyrics(token, song_title, artist)
 ```
 #### Cleaning
-Our `clean_text()` function is straightforward and powerful tool. It turns the ...
+Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
 ```python 
 from pylyrics import clean_text
-# Clean the extracted raw lyrics (paragraph)
-clean_lyrics = pylyrics.clean_text(paragraph, vocabs)
+# Clean the extracted raw lyrics (text)
+clean_lyrics = pylyrics.clean_text(text)
 ```
 
 #### Creating WordCloud
