@@ -1,14 +1,8 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # Date: 2022-01-14
 
-import requests
 import os, sys
-import pandas as pd
-import json
-import urllib.parse
-import re
 import lyricsgenius
-from alive_progress import alive_bar
 
 
 class HiddenPrints:
@@ -56,7 +50,7 @@ def get_lyrics_from_Genius(genius, title, artist):
             return lyrics
 
 
-def extract_lyrics(token, song_title, artist):
+def get_lyrics(token, song_title, artist):
     """
     Extracting lyrics for a song
 
@@ -87,7 +81,7 @@ def extract_lyrics(token, song_title, artist):
             raise ValueError("Empty input")
 
         if not (type(song_title) == str and type(artist) == str):
-            raise ValueError(
+            raise TypeError(
                 "Invalid column type, song title and artist have to be strings"
             )
 
@@ -100,36 +94,6 @@ def extract_lyrics(token, song_title, artist):
         if lyrics:
             return lyrics
 
-    except Exception as req:
-        print(req)
-
-
-"""
-## --For later milestones
-# test
-# /data/credentials.json
-# {
-#   "token": "YOUR-TOKEN"
-# }
-
-with open("data/credentials.json") as f:
-    login = json.load(f)
-token = login["token"]
-
-# Case 1 - happy case
-arr_happy = ["22", "Taylor Swift"]
-
-# Case 2 - empty dataframe
-arr_edge1 = ["", "Taylor Swift"]
-
-# Case 3 - Wrong types
-arr_wrong_type = [22, "Taylor Swift"]
-
-
-print("1 - Happy:")
-print(extract_lyrics(token, arr_happy[0], arr_happy[1]), "\n")
-print("2 - Empty:")
-print(extract_lyrics(token, arr_edge1[0], arr_edge1[1]), "\n")
-print("7 - Wrong column types:")
-print(extract_lyrics(token, arr_wrong_type[0], arr_wrong_type[1]), "\n")
-"""
+    except ValueError as err:
+        #print(err)
+        raise
