@@ -27,6 +27,8 @@ def get_lyrics_from_Genius(genius, title, artist):
 
     Parameters
     ----------
+    genius : Genius
+        Genius object storing user information
     title : string
         song title
     artist : string
@@ -34,8 +36,8 @@ def get_lyrics_from_Genius(genius, title, artist):
 
     Returns
     ----------
-    lyrics : dict
-        return dictionary with keys: title, artist and lyrics
+    lyrics : string
+        return lyrics of the song
 
     Example
     -------
@@ -56,17 +58,17 @@ def get_lyrics(token, song_title, artist):
 
     Parameters
     ----------
+    token : string
+        A token from Genius for asccessing lyrics
     song_title : string
         Title of the song
     artist : string
         Artist of the song
-    token : string
-        A token from Genius for asccessing lyrics
 
     Returns
     ----------
-    songs : dataframe
-        Return lyrics of song with three columns: song_title, artist and lyrics
+    songs : string
+        Return lyrics of song
 
     Example
     -------
@@ -95,5 +97,5 @@ def get_lyrics(token, song_title, artist):
             return lyrics
 
     except ValueError as err:
-        #print(err)
+        print(err)
         raise
