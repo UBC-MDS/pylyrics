@@ -47,6 +47,19 @@ def test_wrong_type_case():
     except:
         assert True
 
+# Case 4 - None from Genius
+def test_null_genius_case():
+    try:
+        token = get_token()
+        arr_null_genius = ["222", "1111"]
+        with pytest.raises(ValueError):
+            print(pl.get_lyrics(token, arr_null_genius[0], arr_null_genius[1]))
+        assert pl.get_lyrics(token, arr_null_genius[0], arr_null_genius[1]) == None, "Song not found"
+    except:
+        assert True
+
+
 #test_happy_case()
 #test_empty_case()
 #test_wrong_type_case()
+#test_null_genius_case()

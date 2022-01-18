@@ -47,7 +47,7 @@ def get_lyrics_from_Genius(genius, title, artist):
 
     with HiddenPrints():
         song = genius.search_song(title, artist)
-        if song:
+        if song and artist in song.artist:
             lyrics = song.lyrics
             return lyrics
 
@@ -95,6 +95,8 @@ def get_lyrics(token, song_title, artist):
 
         if lyrics:
             return lyrics
+        else:
+            raise ValueError("Song not found")
 
     except ValueError as err:
         print(err)
