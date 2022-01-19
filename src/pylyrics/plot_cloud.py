@@ -24,7 +24,7 @@ def plot_cloud(
     song: dictionary
         with artist as dictionary key and song_title as value. Both key and value are strings.
     file_path: str
-        The location to save the file
+        The location to save the file without file format
     max_font_size: int, optional
         maximum font size
     max_words: int, optional
@@ -48,15 +48,13 @@ def plot_cloud(
 
     # check input types
     if type(song) != dict:
-        raise ValueError("song should be a variable of type dictionary.")
+        raise TypeError("song should be a variable of type dictionary.")
     if not (type(file_path) == str and type(background_color) == str):
-        raise ValueError(
-            "Both file_path and background_color should be of type string."
-        )
+        raise TypeError("Both file_path and background_color should be of type string.")
     if not (type(max_font_size) == int and type(max_words) == int):
-        raise ValueError("Both max_font_size and max_words should be of type integer.")
+        raise TypeError("Both max_font_size and max_words should be of type integer.")
     if type(show) != bool:
-        raise ValueError("show only accepts True or False")
+        raise TypeError("show only accepts True or False")
 
     try:
         text = ""
@@ -78,7 +76,7 @@ def plot_cloud(
         if show:
             plt.show()
 
-        plt.savefig(file_path)
+        plt.savefig(file_path + ".png")
 
     except Exception as exp:
         print(exp)
