@@ -1,8 +1,8 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 
-from pylyrics import extract_lyrics
-from pylyrics import clean_text
+from extract_lyrics import extract_lyrics
+from clean_text import clean_text
 
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 def plot_cloud(
     song,
     file_path,
+    token,
     max_font_size=30,
     max_words=120,
     background_color="black",
@@ -33,6 +34,8 @@ def plot_cloud(
         background color
     show: bool, default=False
         whether to display the plot to screen
+    token: str
+        token for downloading lyrics through Genius
 
     Returns
     -------
@@ -60,7 +63,7 @@ def plot_cloud(
         text = ""
         # Create a string of all song lyrics
         for artist, song_title in song.items():
-            raw_lyrics = extract_lyrics(artist, song_title)
+            raw_lyrics = extract_lyrics(token, song, artist)
             clean_lyrics = clean_text(text=raw_lyrics)
             text += " " + clean_lyrics  # Adding space for the end of lyrics
 

@@ -42,7 +42,7 @@ def test_input_types(correct_values):
         pc.plot_cloud(song, file_path, show="yes")  # should be boolean
 
 
-def test_show_true():
+def test_show_true(correct_values):
     """Testing the branching of show argument to see if image is generated"""
     song, file_path = correct_values
     fig = pc.plot_cloud(song, file_path, show=True)
