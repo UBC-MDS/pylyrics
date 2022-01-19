@@ -46,25 +46,39 @@ def plot_cloud(
 
     """
 
-    ## Exception Handeling to be added
+    # check input types
+    if type(song) != dict:
+        raise ValueError("song should be a variable of type dictionary.")
+    if not (type(file_path) == str and type(background_color) == str):
+        raise ValueError(
+            "Both file_path and background_color should be of type string."
+        )
+    if not (type(max_font_size) == int and type(max_words) == int):
+        raise ValueError("Both max_font_size and max_words should be of type integer.")
+    if type(show) != bool:
+        raise ValueError("show only accepts True or False")
 
-    text = ""
-    # Create a string of all song lyrics
-    for artist, song_title in song.items():
-        raw_lyrics = extract_lyrics(artist, song_title)
-        clean_lyrics = clean_text(text=raw_lyrics)
-        text += " " + clean_lyrics  # Adding space for the end of lyrics
+    try:
+        text = ""
+        # Create a string of all song lyrics
+        for artist, song_title in song.items():
+            raw_lyrics = extract_lyrics(artist, song_title)
+            clean_lyrics = clean_text(text=raw_lyrics)
+            text += " " + clean_lyrics  # Adding space for the end of lyrics
 
-    # plot the wordcloud
-    wordcloud = WordCloud(
-        max_font_size=max_font_size,
-        max_words=max_words,
-        background_color=background_color,
-    ).generate(text)
-    plt.imshow(wordcloud, interpolation="antialiased")
-    plt.axis("off")
+        # plot the wordcloud
+        wordcloud = WordCloud(
+            max_font_size=max_font_size,
+            max_words=max_words,
+            background_color=background_color,
+        ).generate(text)
+        plt.imshow(wordcloud, interpolation="antialiased")
+        plt.axis("off")
 
-    if show:
-        plt.show()
+        if show:
+            plt.show()
 
-    plt.savefig(file_path)
+        plt.savefig(file_path)
+
+    except Exception as exp:
+        print(exp)
