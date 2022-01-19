@@ -29,7 +29,7 @@ def test_input_types(correct_values):
 
     with pytest.raises(TypeError):
         song , file_path = correct_values
-        pc.plot_words(song , file_path, background_color=23)  # should be string
+        pc.plot_words(song , file_path, background_color=23)  # should be str
 
     with pytest.raises(TypeError):
         song , file_path = correct_values
