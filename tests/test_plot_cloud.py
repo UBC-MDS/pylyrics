@@ -1,4 +1,3 @@
-from asyncore import file_dispatcher
 from pylyrics import plot_cloud as pc
 import matplotlib as plt
 import pytest
