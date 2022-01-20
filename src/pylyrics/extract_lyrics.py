@@ -1,65 +1,17 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # Date: 2022-01-14
 
-import os, sys
-import lyricsgenius
+import requests
+from bs4 import BeautifulSoup
+import re
 
 
-class HiddenPrints:
-    def __enter__(self):
-        """
-        Suppress printing output
-        """
-        self._original_stdout = sys.stdout
-        sys.stdout = open(os.devnull, "w")
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """
-        Exit suppress printing output
-        """
-        sys.stdout.close()
-        sys.stdout = self._original_stdout
-
-
-def get_lyrics_from_Genius(genius, title, artist):
-    """
-    Find lyrics of song using Genius API
-
-    Parameters
-    ----------
-    genius : Genius
-        Genius object storing user information
-    title : string
-        song title
-    artist : string
-        artist of song
-
-    Returns
-    ----------
-    lyrics : string
-        return lyrics of the song
-
-    Example
-    -------
-    >>> get_lyrics_from_Genius(genius, "22", "Taylor Swift")
-    >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
-    """
-
-    with HiddenPrints():
-        song = genius.search_song(title, artist)
-        if song and artist in song.artist:
-            lyrics = song.lyrics
-            return lyrics
-
-
-def get_lyrics(token, song_title, artist):
+def extract_lyrics(song_title, artist):
     """
     Extracting lyrics for a song
 
     Parameters
     ----------
-    token : string
-        A token from Genius for asccessing lyrics
     song_title : string
         Title of the song
     artist : string
@@ -72,12 +24,11 @@ def get_lyrics(token, song_title, artist):
 
     Example
     -------
-    >>> extract_lyrics("I-AM-TOKEN", "22", "Taylor Swift"):
+    >>> extract_lyrics("22", "Taylor Swift"):
     >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
 
     """
     try:
-        genius = lyricsgenius.Genius(token, retries=5)
 
         if song_title == "" or artist == "":
             raise ValueError("Empty input")
@@ -87,17 +38,28 @@ def get_lyrics(token, song_title, artist):
                 "Invalid column type, song title and artist have to be strings"
             )
 
-        lyrics = get_lyrics_from_Genius(
-            genius,
-            song_title,
-            artist,
+        lyrics = ""
+        url = (
+            "https://genius.com/"
+            + artist.replace(" ", "-")
+            + "-"
+            + song_title.replace(" ", "-")
+            + "-lyrics"
         )
-
-        if lyrics:
-            return lyrics
-        else:
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        results = soup.find(id="lyrics-root")
+        if not results:
             raise ValueError("Song not found")
 
-    except ValueError as err:
+        job_elements = results.find_all("span")
+        for i in range(len(job_elements)):
+            if job_elements[i].text != "":
+                lyrics += job_elements[i].text
+        lyrics = re.sub(r"(\w)([A-Z])", r"\1 \2", lyrics)
+        lyrics = re.sub(r"(\w)([0-9])", r"\1 \2", lyrics)
+        return lyrics
+
+    except (ValueError, TypeError) as err:
         print(err)
         raise
