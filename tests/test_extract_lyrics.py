@@ -52,7 +52,7 @@ def test_null_genius_case():
         assert True
 
 
-test_happy_case()
-test_empty_case()
-test_wrong_type_case()
-test_null_genius_case()
+# test_happy_case()
+# test_empty_case()
+# test_wrong_type_case()
+# test_null_genius_case()
