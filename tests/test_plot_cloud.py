@@ -1,3 +1,6 @@
+# Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
+# Date: 2022-01-20
+
 from pylyrics import plot_cloud as pc
 import matplotlib as plt
 import pytest

@@ -2,7 +2,7 @@
 # January 2022
 
 import re
-from pylyrics import extract_lyrics
+from extract_lyrics import extract_lyrics
 
 
 def clean_text(text):
