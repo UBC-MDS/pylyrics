@@ -11,30 +11,20 @@ def test_case1():
     target = "it feels like a perfect night to dress up like hipsters and make fun of our exes"
     assert ct.clean_text(lyrics) == target, "Something went wrong"
 
-
 # Case 2 - empty dataframe
 def test_case2():
     lyrics = " "
     with pytest.raises(ValueError):
         ct.clean_text(lyrics)
 
-
 # Case 3 - wrong type
 def test_case3():
-    try:
-        lyrics = "!!I Love you"
-        with pytest.raises(TypeError):
-            regex = re.compile("[@_!#$%^&*()<>?/|}{~:]")
-            subtext = ct.clean_text(lyrics)[0:1]
-        assert regex.search(subtext) != None, "Text cannot start with special character"
-    except:
-        assert True
-
+    lyrics = "!!I Love you"
+    with pytest.raises(ValueError):
+        ct.clean_text(lyrics)
 
 # Case 4 - small text
 def test_case4():
-    try:
-        lyrics = "!!I Love you"
-        assert len(ct.clean_text(lyrics)) <= 5, "Too small to give meaniful output"
-    except:
-        assert True
+    lyrics = "an"
+    with pytest.raises(ValueError):
+        ct.clean_text(lyrics)
