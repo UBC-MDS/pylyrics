@@ -2,9 +2,6 @@
 # January 2022
 import re
 
-# from extract_lyrics import extract_lyrics
-
-
 def clean_text(text):
     """Cleans the text by removing special characters, html_tags, #tags, contaction words and convert everything to lower case.
 
@@ -28,9 +25,19 @@ def clean_text(text):
         if type(text) != str:
             raise TypeError("Text should be a variable of type string.")
 
-        # cdsfglasl
+        # check for blank string
         if len(text.strip()) == 0:
             raise ValueError("Blank text input")
+        
+        # check for special charater  string
+        regex = re.compile("[@_!#$%^&*()<>?/|}{~:]")
+        subtext = text[0:1]
+        if regex.search(subtext) != None:
+            raise ValueError("Text cannot start with special character")
+        
+        # check for special charater  string
+        if len(text) <= 2:
+            raise ValueError("Text is too small")
 
         contra_dict = {
             "'s": " is",
