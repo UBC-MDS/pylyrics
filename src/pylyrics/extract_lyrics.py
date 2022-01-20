@@ -2,61 +2,11 @@
 # Date: 2022-01-14
 
 import requests
-import os, sys
-import pandas as pd
-import json
-import urllib.parse
+from bs4 import BeautifulSoup
 import re
-import lyricsgenius
-from alive_progress import alive_bar
 
 
-class HiddenPrints:
-    def __enter__(self):
-        """
-        Suppress printing output
-        """
-        self._original_stdout = sys.stdout
-        sys.stdout = open(os.devnull, "w")
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """
-        Exit suppress printing output
-        """
-        sys.stdout.close()
-        sys.stdout = self._original_stdout
-
-
-def get_lyrics_from_Genius(genius, title, artist):
-    """
-    Find lyrics of song using Genius API
-
-    Parameters
-    ----------
-    title : string
-        song title
-    artist : string
-        artist of song
-
-    Returns
-    ----------
-    lyrics : dict
-        return dictionary with keys: title, artist and lyrics
-
-    Example
-    -------
-    >>> get_lyrics_from_Genius(genius, "22", "Taylor Swift")
-    >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
-    """
-
-    with HiddenPrints():
-        song = genius.search_song(title, artist)
-        if song:
-            lyrics = song.lyrics
-            return lyrics
-
-
-def extract_lyrics(token, song_title, artist):
+def extract_lyrics(song_title, artist):
     """
     Extracting lyrics for a song
 
@@ -66,70 +16,50 @@ def extract_lyrics(token, song_title, artist):
         Title of the song
     artist : string
         Artist of the song
-    token : string
-        A token from Genius for asccessing lyrics
 
     Returns
     ----------
-    songs : dataframe
-        Return lyrics of song with three columns: song_title, artist and lyrics
+    songs : string
+        Return lyrics of song
 
     Example
     -------
-    >>> extract_lyrics("I-AM-TOKEN", "22", "Taylor Swift"):
+    >>> extract_lyrics("22", "Taylor Swift"):
     >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
 
     """
     try:
-        genius = lyricsgenius.Genius(token, retries=5)
 
         if song_title == "" or artist == "":
             raise ValueError("Empty input")
 
         if not (type(song_title) == str and type(artist) == str):
-            raise ValueError(
+            raise TypeError(
                 "Invalid column type, song title and artist have to be strings"
             )
 
-        lyrics = get_lyrics_from_Genius(
-            genius,
-            song_title,
-            artist,
+        lyrics = ""
+        url = (
+            "https://genius.com/"
+            + artist.replace(" ", "-")
+            + "-"
+            + song_title.replace(" ", "-")
+            + "-lyrics"
         )
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        results = soup.find(id="lyrics-root")
+        if not results:
+            raise ValueError("Song not found")
 
-        if lyrics:
-            return lyrics
+        job_elements = results.find_all("span")
+        for i in range(len(job_elements)):
+            if job_elements[i].text != "":
+                lyrics += job_elements[i].text
+        lyrics = re.sub(r"(\w)([A-Z])", r"\1 \2", lyrics)
+        lyrics = re.sub(r"(\w)([0-9])", r"\1 \2", lyrics)
+        return lyrics
 
-    except Exception as req:
-        print(req)
-
-
-"""
-## --For later milestones
-# test
-# /data/credentials.json
-# {
-#   "token": "YOUR-TOKEN"
-# }
-
-with open("data/credentials.json") as f:
-    login = json.load(f)
-token = login["token"]
-
-# Case 1 - happy case
-arr_happy = ["22", "Taylor Swift"]
-
-# Case 2 - empty dataframe
-arr_edge1 = ["", "Taylor Swift"]
-
-# Case 3 - Wrong types
-arr_wrong_type = [22, "Taylor Swift"]
-
-
-print("1 - Happy:")
-print(extract_lyrics(token, arr_happy[0], arr_happy[1]), "\n")
-print("2 - Empty:")
-print(extract_lyrics(token, arr_edge1[0], arr_edge1[1]), "\n")
-print("7 - Wrong column types:")
-print(extract_lyrics(token, arr_wrong_type[0], arr_wrong_type[1]), "\n")
-"""
+    except (ValueError, TypeError) as err:
+        print(err)
+        raise
