@@ -15,41 +15,24 @@ def test_happy_case():
 
 # Case 2 - empty dataframe
 def test_empty_case():
-    try:
-        arr_edge1 = ["", "Taylor Swift"]
-        with pytest.raises(ValueError):
-            pl.extract_lyrics(arr_edge1[0], arr_edge1[1])
-        assert (
-            pl.extract_lyrics(arr_edge1[0], arr_edge1[1]) == None
-        ), "Edge case exception handling failed, should return None"
-    except:
-        assert True
+    arr_edge1 = ["", "Taylor Swift"]
+    with pytest.raises(ValueError):
+        pl.extract_lyrics(arr_edge1[0], arr_edge1[1])
 
 
 # Case 3 - Wrong types
 def test_wrong_type_case():
-    try:
-        arr_wrong_type = [22, "Taylor Swift"]
-        with pytest.raises(TypeError):
-            pl.extract_lyrics(arr_wrong_type[0], arr_wrong_type[1])
-        assert (
-            pl.extract_lyrics(arr_wrong_type[0], arr_wrong_type[1]) == None
-        ), "Type check exception handling failed, should return None"
-    except:
-        assert True
+
+    arr_wrong_type = [22, "Taylor Swift"]
+    with pytest.raises(TypeError):
+        pl.extract_lyrics(arr_wrong_type[0], arr_wrong_type[1])
 
 
 # Case 4 - None from Genius
 def test_null_genius_case():
-    try:
-        arr_null_genius = ["222", "1111"]
-        with pytest.raises(ValueError):
-            print(pl.extract_lyrics(arr_null_genius[0], arr_null_genius[1]))
-        assert (
-            pl.extract_lyrics(arr_null_genius[0], arr_null_genius[1]) == None
-        ), "Song not found"
-    except:
-        assert True
+    arr_null_genius = ["222", "1111"]
+    with pytest.raises(ValueError):
+        print(pl.extract_lyrics(arr_null_genius[0], arr_null_genius[1]))
 
 
 # test_happy_case()
