@@ -34,8 +34,6 @@ def plot_cloud(
         background color
     show: bool, default=False
         whether to display the plot to screen
-    token: str
-        token for downloading lyrics through Genius
 
     Returns
     -------
@@ -63,7 +61,7 @@ def plot_cloud(
         text = ""
         # Create a string of all song lyrics
         for artist, song_title in song.items():
-            raw_lyrics = extract_lyrics(token, song, artist)
+            raw_lyrics = extract_lyrics(song_title, artist)
             clean_lyrics = clean_text(text=raw_lyrics)
             text += " " + clean_lyrics  # Adding space for the end of lyrics
 
