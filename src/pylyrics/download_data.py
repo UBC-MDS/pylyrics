@@ -29,6 +29,15 @@ def download_data(dataset, file_path, columns):
     download_data("geomack/spotifyclassification", "data/spotify_attributes", ("song_title", "artist"))
     spotify_df = download_data("geomack/spotifyclassification", "data/spotify_attributes", ("song_title", "artist"))
     """
+    if not (type(dataset)) == str:
+        raise TypeError("Dataset should be of type string.")
+    if not (type(file_path)) == str:
+        raise TypeError("File_path should be of type string.")
+    if not(type(columns)) == list:
+        raise TypeError("The column names should be of type list")
+    if not(len(columns)) == 2:
+        raise TypeError("Two columns should be retrieved")
+
     try:
         kaggle.api.authenticate()
         kaggle.api.dataset_download_files(
@@ -45,5 +54,11 @@ def download_data(dataset, file_path, columns):
             unzip=True,
         )
     
-    df = pd.read_csv((file_path + '/' + str(os.listdir(file_path).pop())), usecols=columns)
+    df = pd.read_csv((file_path + '/' + str(os.listdir(file_path).pop())))
+    
+    if set(columns).issubset(df.columns):
+        df = df[columns]
+    else:
+        raise ValueError("Incorrect column names, please check again")
+             
     return df
