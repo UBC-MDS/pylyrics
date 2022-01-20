@@ -1,7 +1,7 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
-
 import re
+
 # from extract_lyrics import extract_lyrics
 
 
@@ -23,18 +23,34 @@ def clean_text(text):
     >>> clean_text("Early optimization is the root of all evil!")
     'early optimization is the root of all evil'
     """
-    
-    # check input types
-    if type(text) != str:
-        raise TypeError("Text should be a variable of type string.")
+    try:
+        # check input types
+        if type(text) != str:
+            raise TypeError("Text should be a variable of type string.")
 
-    contra_dict={"'s":" is","n't":" not","'m":" am","'ll":" will", "'d":" would","'ve":" have","'re":" are"}
-    for key,value in contra_dict.items():
-        if key in text:
-            text = text.replace(key,value)
-        # lower case and remove special characters
-    text = re.sub(r'[^a-zA-Z\s]', '', text, re.I|re.A)
-    text = re.sub(r'https?:\/\/.\S+', "", text)
-    text = re.sub(r'#', '', text)
-    text = text.lower()
-    return text
+        # cdsfglasl
+        if len(text.strip()) == 0:
+            raise ValueError("Blank text input")
+
+        contra_dict = {
+            "'s": " is",
+            "n't": " not",
+            "'m": " am",
+            "'ll": " will",
+            "'d": " would",
+            "'ve": " have",
+            "'re": " are",
+        }
+        for key, value in contra_dict.items():
+            if key in text:
+                text = text.replace(key, value)
+            # lower case and remove special characters
+        text = re.sub(r"[^a-zA-Z\s]", "", text, re.I | re.A)
+        text = re.sub(r"https?:\/\/.\S+", "", text)
+        text = re.sub(r"#", "", text)
+        text = text.lower()
+        return text
+
+    except (TypeError, ValueError) as err:
+        print(err)
+        raise err
