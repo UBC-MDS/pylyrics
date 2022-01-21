@@ -18,8 +18,8 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 |-----------|------------|---------------|------------------|
 | download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
 | extract_lyrics | `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
-| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
+| clean_text | `text`, `bool_contra_dict` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contraction words and convert everything to lower case |
+| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
 <br>
 
@@ -44,7 +44,7 @@ The pylyrics packages contains the following four functions:
 
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
-3. `clean_text()` The lyrics extracted from `extract_lyrics()` are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+3. `clean_text()` The lyrics extracted from `extract_lyrics()` are not clean. It removes attribute tags like chorus etc , punctuations and English stop words and convert everything to lower case to get a cleaned paragraph. 
 
 4. `plot_cloud()` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
 
@@ -75,8 +75,10 @@ To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggl
 from pylyrics import download_data
 # Example dataset: Spotify Song Attributes  
 dataset = "geomack/spotifyclassification"
+file_path = "data/spotify_attributes"
+columns = ["song_title", "artist"]
 # Extract columns 
-df_columns = pylyrics.download_data(dataset, cols=['energy', 'liveness'])
+df = download_data(dataset, file_path, columns)
 ```
 #### Extracting Lyrics
 The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
@@ -84,14 +86,17 @@ The `extract_lyrics()` function gets the `song_title` and `artist` name, checks 
 ```python 
 from pylyrics import extract_lyrics
 # extracting lyrics 
-raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
+song_title = "22"
+artist = "Taylor Swift"
+raw_lyrics = extract_lyrics(song_title, artist)
 ```
 #### Cleaning
 Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
 ```python 
 from pylyrics import clean_text
 # Clean the extracted raw lyrics (text)
-clean_lyrics = pylyrics.clean_text(text)
+text = "Early optimization is the root of all evil!"
+clean_lyrics = clean_text(text, bool_contra_dict=True)
 ```
 
 #### Creating WordCloud
@@ -100,8 +105,9 @@ At this stage, we have helper functions to facilitate the extraction and cleanin
 ```python 
 from pylyrics import plot_cloud
 # plotting and saving WordCloud
-pylyrics.plot_cloud(song,
-    file_path, max_font_size=30, max_words=120, background_color="black", show=False)
+song = { "Taylor Swift": "22", "Queen" : "Bohemian Rhapsody" }
+file_path = "tests/data/22_BR"
+plot_cloud(song, file_path, max_font_size=30, max_words=120, background_color="black")
 ```
 
 <br>
