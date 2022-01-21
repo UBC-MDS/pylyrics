@@ -1,6 +1,8 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 import re
+from extract_lyrics import extract_lyrics
+
 
 def clean_text(text):
     """Cleans the text by removing special characters, html_tags, #tags, contaction words and convert everything to lower case.
