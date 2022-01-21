@@ -1,4 +1,4 @@
-# Pylyrics  
+# pylyrics  
 A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
@@ -18,8 +18,8 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 |-----------|------------|---------------|------------------|
 | download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
 | extract_lyrics | `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
-| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
+| clean_text | `text`, `bool_contra_dict` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contraction words and convert everything to lower case |
+| plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
 <br>
 
@@ -45,9 +45,9 @@ The pylyrics packages contains the following four functions:
 
 2. `extract_lyrics()` The extract lyrics function, extracts the lyrics from API for a song title and artist and saves it as a dataframe with columns song title, artist and lyrics.
 
-3. `clean_text()` The lyrics extracted from `extract_lyrics()` are not clean. It removes attribute tags like chorus etc , punctuations and English stop words to get a cleaned paragraph. 
+3. `clean_text()` The lyrics extracted from `extract_lyrics()` are not clean. It removes special characters, html tags, #tags, contraction words and convert everything to lower case to get a cleaned paragraph. 
 
-4. `plot_cloud()` The plot cloud function creates a word cloud of most occuring words in a song/songs by an artist.
+4. `plot_cloud()` The plot cloud function creates a word cloud of most occurring words in a song/songs by an artist.
 
 <br>
 
@@ -66,7 +66,7 @@ The pylyrics packages contains the following four functions:
 ### Usage
 ---
 #### Downloading and Selecting
-The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `cols` argument. 
+The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `columns` argument. 
 
 To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggle.com). Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
@@ -74,6 +74,8 @@ To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggl
 from pylyrics import download_data as dd
 # Example dataset: Spotify Song Attributes  
 dataset = "geomack/spotifyclassification"
+file_path = "data/spotify_attributes"
+columns = ["song_title", "artist"]
 # Extract columns 
 dd.download_data(dataset, "data/spotify_attributes", ["song_title", "artist"])
 ```
@@ -95,7 +97,7 @@ clean_lyrics = ct.clean_text(lyrics)
 
 #### Creating WordCloud
 WordCloud is an artistic rendering of the most frequent words in a text document. A higher occurrence for a word is translated into a larger text size.  
-At this stage, we have helper functions to facilitate the extraction and cleaning of lyrics. The `plot_cloud()` function accepts a **dictionary** with `artist` as dictionary key and `song_title` as values. It will then extract the lyrics for all songs in the dictionary and saves a WordCould of the most occurring terms in the `file_path` provided by the user. You may specify if you want to see the output plot by setting `show=True`. The WordClould parameters to be set are self-explanatory: `max_font_size`, `max_word` and `background_color`.
+At this stage, we have helper functions to facilitate the extraction and cleaning of lyrics. The `plot_cloud()` function accepts a **dictionary** with `artist` as dictionary key and `song_title` as values. It will then extract the lyrics for all songs in the dictionary and saves a WordCould of the most occurring terms in the `file_path` provided by the user. The WordClould parameters to be set are self-explanatory: `max_font_size`, `max_word` and `background_color`.
 ```python 
 from pylyrics import plot_cloud as pc
 # plotting and saving WordCloud

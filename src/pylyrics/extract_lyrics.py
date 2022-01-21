@@ -19,12 +19,12 @@ def extract_lyrics(song_title, artist):
 
     Returns
     ----------
-    songs : string
+    lyrics : string
         Return lyrics of song
 
     Example
     -------
-    >>> extract_lyrics("22", "Taylor Swift"):
+    >>> extract_lyrics("22", "Taylor Swift")
     >>> "[Verse 1]\nIt feels like a perfect night\nTo dress u..."
 
     """

@@ -21,7 +21,7 @@ def download_data(dataset, file_path, columns):
 
     Returns
     -------
-    dataframe:
+    df:
         A dataframe with the given column names
 
     Example
