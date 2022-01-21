@@ -18,7 +18,7 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 |-----------|------------|---------------|------------------|
 | download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
 | extract_lyrics | `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` |
-| clean_text | `text` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contraction words and convert everything to lower case |
+| clean_text | `text`, `bool_contra_dict` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contraction words and convert everything to lower case |
 | plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
 <br>
@@ -86,6 +86,8 @@ The `extract_lyrics()` function gets the `song_title` and `artist` name, checks 
 ```python 
 from pylyrics import extract_lyrics
 # extracting lyrics 
+song_title = "22"
+artist = "Taylor Swift"
 raw_lyrics = extract_lyrics(song_title, artist)
 ```
 #### Cleaning
@@ -93,7 +95,8 @@ Our `clean_text()` function is straightforward. It turns the raw lyrics into a h
 ```python 
 from pylyrics import clean_text
 # Clean the extracted raw lyrics (text)
-clean_lyrics = clean_text(text)
+text = "Early optimization is the root of all evil!"
+clean_lyrics = clean_text(text, bool_contra_dict=True)
 ```
 
 #### Creating WordCloud
@@ -102,7 +105,7 @@ At this stage, we have helper functions to facilitate the extraction and cleanin
 ```python 
 from pylyrics import plot_cloud
 # plotting and saving WordCloud
-song = { “Taylor Swift”: “22", “Queen” : “Bohemian Rhapsody” }
+song = { "Taylor Swift": "22", "Queen" : "Bohemian Rhapsody" }
 file_path = "tests/data/22_BR"
 plot_cloud(song, file_path, max_font_size=30, max_words=120, background_color="black", show=True)
 ```
