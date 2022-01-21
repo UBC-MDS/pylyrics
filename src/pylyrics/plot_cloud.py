@@ -81,10 +81,3 @@ def plot_cloud(
     except Exception as exp:
         print(exp)
         raise
-
-
-"""
-song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
-file_path = "data/cloud"
-plot_cloud(song, file_path)
-"""
