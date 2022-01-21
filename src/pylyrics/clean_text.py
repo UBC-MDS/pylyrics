@@ -1,7 +1,6 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 import re
-from extract_lyrics import extract_lyrics
 
 
 def clean_text(text):
@@ -14,7 +13,7 @@ def clean_text(text):
 
     Returns
     -------
-    str
+    text
         Cleaned text.
 
     Examples
@@ -30,13 +29,13 @@ def clean_text(text):
         # check for blank string
         if len(text.strip()) == 0:
             raise ValueError("Blank text input")
-        
+
         # check for special charater  string
         regex = re.compile("[@_!#$%^&*()<>?/|}{~:]")
         subtext = text[0:1]
         if regex.search(subtext) != None:
             raise ValueError("Text cannot start with special character")
-        
+
         # check for special charater  string
         if len(text) <= 2:
             raise ValueError("Text is too small")

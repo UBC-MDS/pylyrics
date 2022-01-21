@@ -6,6 +6,7 @@ from clean_text import clean_text
 
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import os
 
 
 def plot_cloud(
@@ -41,7 +42,8 @@ def plot_cloud(
 
     Example
     -------
-    >>> from pylyrics.pylyrics import plot_cloud
+    >>> song = { "Taylor Swift": "22", "Queen" : "Bohemian Rhapsody" }
+    >>> file_path = "tests/data/22_BR"
     >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black', show=True)
 
     """
@@ -76,7 +78,11 @@ def plot_cloud(
         if show:
             plt.show()
 
-        plt.savefig(file_path + ".png")
+        directory = os.path.dirname(file_path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        plt.savefig(os.getcwd() + "/" + file_path + ".png")
 
     except Exception as exp:
         print(exp)
