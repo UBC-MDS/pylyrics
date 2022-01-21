@@ -32,7 +32,8 @@ There exist similar packages Python. However, this package is more holistic, in 
 ### Installation
 ---
 ```bash
-$ pip install pylyrics
+$ pip install git+https://github.com/UBC-MDS/pylyrics
+
 ```
 <br>
 
@@ -54,14 +55,12 @@ The pylyrics packages contains the following four functions:
 ---
 - python = ^3.9
 - pandas = ^1.2.3
-- regex
 - kaggle
-- json
 - urllib.parse
-- lyricsgenius
-- alive_progress
 - wordcloud
 - matplotlib  
+- ßbeautifulsoup4
+
 <br>
 
 ### Usage
@@ -72,36 +71,37 @@ The first function in our package is the `download_data()`. Here you will input 
 To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggle.com). Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
 ```python 
-from pylyrics import download_data
+from pylyrics import download_data as dd
 # Example dataset: Spotify Song Attributes  
 dataset = "geomack/spotifyclassification"
 # Extract columns 
-df_columns = pylyrics.download_data(dataset, cols=['energy', 'liveness'])
+dd.download_data(dataset, "data/spotify_attributes", ["song_title", "artist"])
 ```
 #### Extracting Lyrics
 The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
 
 ```python 
-from pylyrics import extract_lyrics
+from pylyrics import extract_lyrics as el
 # extracting lyrics 
-raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
+raw_lyrics = el.extract_lyrics("22", "Taylor Swift")
 ```
 #### Cleaning
 Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
 ```python 
-from pylyrics import clean_text
+from pylyrics import clean_text as ct
 # Clean the extracted raw lyrics (text)
-clean_lyrics = pylyrics.clean_text(text)
+clean_lyrics = ct.clean_text(lyrics)
 ```
 
 #### Creating WordCloud
 WordCloud is an artistic rendering of the most frequent words in a text document. A higher occurrence for a word is translated into a larger text size.  
 At this stage, we have helper functions to facilitate the extraction and cleaning of lyrics. The `plot_cloud()` function accepts a **dictionary** with `artist` as dictionary key and `song_title` as values. It will then extract the lyrics for all songs in the dictionary and saves a WordCould of the most occurring terms in the `file_path` provided by the user. You may specify if you want to see the output plot by setting `show=True`. The WordClould parameters to be set are self-explanatory: `max_font_size`, `max_word` and `background_color`.
 ```python 
-from pylyrics import plot_cloud
+from pylyrics import plot_cloud as pc
 # plotting and saving WordCloud
-pylyrics.plot_cloud(song,
-    file_path, max_font_size=30, max_words=120, background_color="black", show=False)
+song = { "Taylor Swift": "all too well", "Adele" : "Hello" }
+file_path = "data/wordcloud"
+pc.plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black')
 ```
 
 <br>
