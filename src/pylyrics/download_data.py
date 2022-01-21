@@ -5,6 +5,7 @@ import os
 import pandas as pd
 import kaggle
 
+
 def download_data(dataset, file_path, columns):
     """
     Downloads dataset from kaggle to filepath and creates a dataframe with input columns
@@ -26,8 +27,8 @@ def download_data(dataset, file_path, columns):
     Example
     -------
     from pylyrics import download_data
-    download_data("geomack/spotifyclassification", "data/spotify_attributes", ("song_title", "artist"))
-    spotify_df = download_data("geomack/spotifyclassification", "data/spotify_attributes", ("song_title", "artist"))
+    download_data("geomack/spotifyclassification", "data/spotify_attributes", ["song_title", "artist"])
+    spotify_df = download_data("geomack/spotifyclassification", "data/spotify_attributes", ["song_title", "artist"])
     """
     try:
 
@@ -35,30 +36,29 @@ def download_data(dataset, file_path, columns):
             raise TypeError("Dataset should be of type string.")
         if not (type(file_path)) == str:
             raise TypeError("File_path should be of type string.")
-        if not(type(columns)) == list:
+        if not (type(columns)) == list:
             raise TypeError("The column names should be of type list")
-        if not(len(columns)) == 2:
+        if not (len(columns)) == 2:
             raise TypeError("Two columns should be retrieved")
 
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-    
         kaggle.api.authenticate()
         kaggle.api.dataset_download_files(
             dataset,
             path=file_path,
             unzip=True,
         )
-    
-        df = pd.read_csv((file_path + '/' + str(os.listdir(file_path).pop())))
-    
+
+        df = pd.read_csv((file_path + "/" + str(os.listdir(file_path).pop())))
+
         if set(columns).issubset(df.columns):
             df = df[columns]
         else:
             raise ValueError("Incorrect column names, please check again")
-             
+
         return df
 
     except (TypeError, ValueError) as req:
