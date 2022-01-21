@@ -1,9 +1,8 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 
-from extract_lyrics import extract_lyrics
-from clean_text import clean_text
-
+from pylyrics.extract_lyrics import extract_lyrics
+from pylyrics.clean_text import clean_text
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import os
@@ -32,8 +31,6 @@ def plot_cloud(
         maximum number of words to be included in wordcloud
     background_color: str, optional
         background color
-    show: bool, default=False
-        whether to display the plot to screen
 
     Returns
     -------
@@ -43,22 +40,23 @@ def plot_cloud(
     Example
     -------
     >>> song = { "Taylor Swift": "22", "Queen" : "Bohemian Rhapsody" }
-    >>> file_path = "tests/data/22_BR"
+    >>> file_path = "data/wordcloud"
     >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black', show=True)
 
     """
-
-    # check input types
-    if type(song) != dict:
-        raise TypeError("song should be a variable of type dictionary.")
-    if not (type(file_path) == str and type(background_color) == str):
-        raise TypeError("Both file_path and background_color should be of type string.")
-    if not (type(max_font_size) == int and type(max_words) == int):
-        raise TypeError("Both max_font_size and max_words should be of type integer.")
-    if type(show) != bool:
-        raise TypeError("show only accepts True or False")
-
     try:
+        # check input types
+        if type(song) != dict:
+            raise TypeError("song should be a variable of type dictionary.")
+        if not (type(file_path) == str and type(background_color) == str):
+            raise TypeError(
+                "Both file_path and background_color should be of type string."
+            )
+        if not (type(max_font_size) == int and type(max_words) == int):
+            raise TypeError(
+                "Both max_font_size and max_words should be of type integer."
+            )
+
         text = ""
         # Create a string of all song lyrics
         for artist, song_title in song.items():
@@ -72,17 +70,18 @@ def plot_cloud(
             max_words=max_words,
             background_color=background_color,
         ).generate(text)
+
         plt.imshow(wordcloud, interpolation="antialiased")
         plt.axis("off")
-
-        if show:
-            plt.show()
+        plt.show()
 
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-        plt.savefig(os.getcwd() + "/" + file_path + ".png")
+        # plt.savefig( file_path + ".png")
+        plt.savefig((file_path + "/wordcloud.png"))
 
     except Exception as exp:
         print(exp)
+        raise

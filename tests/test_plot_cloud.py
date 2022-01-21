@@ -9,8 +9,8 @@ import os
 
 @pytest.fixture
 def correct_values():
-    song = {"22": "Taylor Swift", "Bohemian Rhapsody": "Queen"}
-    file_path = os.getcwd() + "/tests/data/22_BR"
+    song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
+    file_path = "tests/data/22_BR"
 
     return song, file_path
 
@@ -45,14 +45,6 @@ def test_input_types(correct_values):
         pc.plot_cloud(song, file_path, show="yes")  # should be boolean
 
 
-def test_show_true(correct_values):
-    """Testing the branching of show argument to see if image is generated"""
-    song, file_path = correct_values
-    fig = pc.plot_cloud(song, file_path, show=True)
-    assert isinstance(fig, plt.figure), "No plot has been printed to the screen"
-    # Need to check if plt.figure.Figure works
-
-
 def test_no_lyrics(correct_values):
     """Testing the case when no lyrics is found"""
     with pytest.raises(ValueError):
@@ -67,3 +59,8 @@ def test_image(correct_values):
     pc.plot_cloud(song, file_path)
     saved_img = open(file_path + ".png").read()
     assert saved_img == True, "No image has been saved"
+
+
+song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
+file_path = "data/cloud"
+pc.plot_cloud(song, file_path)
