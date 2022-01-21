@@ -80,10 +80,3 @@ def plot_cloud(
 
     except Exception as exp:
         print(exp)
-
-
-import os
-
-song = {"22": "Taylor Swift", "Bohemian Rhapsody": "Queen"}
-file_path = os.getcwd() + "/tests/data/22_BR"
-plot_cloud(song, file_path, show=True)
