@@ -59,7 +59,7 @@ The pylyrics packages contains the following four functions:
 - urllib.parse
 - wordcloud
 - matplotlib  
-- ßbeautifulsoup4
+- beautifulsoup4
 
 <br>
 
