@@ -33,9 +33,3 @@ def test_null_genius_case():
     arr_null_genius = ["222", "1111"]
     with pytest.raises(ValueError):
         print(pl.extract_lyrics(arr_null_genius[0], arr_null_genius[1]))
-
-
-# test_happy_case()
-# test_empty_case()
-# test_wrong_type_case()
-# test_null_genius_case()
