@@ -1,4 +1,4 @@
-# Pylyrics  
+# pylyrics  
 A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
