@@ -69,7 +69,6 @@ def plot_cloud(
 
         plt.imshow(wordcloud, interpolation="antialiased")
         plt.axis("off")
-        plt.show()
 
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
