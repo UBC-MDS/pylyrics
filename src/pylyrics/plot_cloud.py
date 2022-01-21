@@ -1,6 +1,7 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 
+
 from pylyrics.extract_lyrics import extract_lyrics
 from pylyrics.clean_text import clean_text
 from wordcloud import WordCloud
@@ -9,12 +10,7 @@ import os
 
 
 def plot_cloud(
-    song,
-    file_path,
-    max_font_size=30,
-    max_words=120,
-    background_color="black",
-    show=False,
+    song, file_path, max_font_size=30, max_words=120, background_color="black"
 ):
     """
     Creates a wordcloud of most occuring words in a string or list of strings
@@ -80,8 +76,15 @@ def plot_cloud(
             os.makedirs(directory)
 
         # plt.savefig( file_path + ".png")
-        plt.savefig((file_path + "/wordcloud.png"))
+        plt.savefig((file_path + ".png"))
 
     except Exception as exp:
         print(exp)
         raise
+
+
+"""
+song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
+file_path = "data/cloud"
+plot_cloud(song, file_path)
+"""
