@@ -17,7 +17,7 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
 | download_data | `dataset`, `file_path`, `columns` | Pandas Dataframe | Downloads dataset from `kaggle dataset` and extract `columns` from csv file |
-| extract_lyrics | `token`, `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` using `token` |
+| extract_lyrics | `song_title`, `artist` | String | Extracts song lyrics of a song `song_title` by `artist` |
 | clean_text | `lyrics` | String |  Cleans up the `lyrics` by removing special characters, html tags, #tags, contaction words |
 | plot_cloud | `song`, `file_path`, `max_font_size`, `max_words`, `background_color`, `show` | Image | Creates a word cloud image of most occuring words of a song/songs by an artist |
 
@@ -80,11 +80,11 @@ df_columns = pylyrics.download_data(dataset, cols=['energy', 'liveness'])
 ```
 #### Extracting Lyrics
 The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
-To obtain the lyris from Genius, you need to create an account on [Genius API](https://docs.genius.com), you can see your token in any tab under resource.
+
 ```python 
 from pylyrics import extract_lyrics
 # extracting lyrics 
-raw_lyrics = pylyrics.extract_lyrics(token, song_title, artist)
+raw_lyrics = pylyrics.extract_lyrics(song_title, artist)
 ```
 #### Cleaning
 Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
