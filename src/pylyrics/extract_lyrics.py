@@ -52,7 +52,6 @@ def extract_lyrics(song_title, artist):
 
         if not results:
             print("url: " + url)
-            print(page)
             raise ValueError("Song not found")
 
         job_elements = results.find_all("span")
@@ -64,5 +63,5 @@ def extract_lyrics(song_title, artist):
         return lyrics
 
     except (ValueError, TypeError) as err:
-        print(err)
+        # print(err)
         raise

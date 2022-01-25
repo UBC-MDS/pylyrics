@@ -10,7 +10,6 @@ import os
 def correct_values():
     song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
     file_path = "tests/data/22_BR"
-
     return song, file_path
 
 
@@ -46,8 +45,9 @@ def test_no_lyrics(correct_values):
         pc.plot_cloud(song, file_path)
 
 
-def test_image(correct_values):
-    """Testing if an image is saved"""
-    song, file_path = correct_values
-    pc.plot_cloud(song, file_path)
-    assert os.path.exists(file_path + ".png") == True, "No image has been saved"
+# Removed since Genius.com blocked the access from Azure Virtual Machine running Ubuntu
+# def test_image(correct_values):
+#    """Testing if an image is saved"""
+#    song, file_path = correct_values
+#    pc.plot_cloud(song, file_path)
+#    assert os.path.exists(file_path + ".png") == True, "No image has been saved"
