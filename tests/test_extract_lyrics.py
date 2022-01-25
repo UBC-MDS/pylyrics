@@ -2,16 +2,19 @@ from pylyrics import extract_lyrics as pl
 import json, os
 import pytest
 
-# Removed since Genius.com blocked the access from Azure Virtual Machine running Ubuntu
+# Skip testing this module if on Github Actions
+ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~')
+
+
 # Case 1 - happy case
-# def test_happy_case():
-#    current_path = os.getcwd()
-#    arr_happy = ["22", "Taylor Swift"]
-#    target = open(current_path + "/tests/data/lyrics_22.txt", "r").read()
-#
-#    assert (
-#        pl.extract_lyrics(arr_happy[0], arr_happy[1]) == target
-#    ), "Lyrics output incorrect"
+@pytest.mark.skipif(ON_GITHUB_ACTIONS, reason='Requires access to the Genius website.')
+def test_happy_case():
+   current_path = os.getcwd()
+   arr_happy = ["22", "Taylor Swift"]
+   target = open(current_path + "/tests/data/lyrics_22.txt", "r").read()
+   assert (
+       pl.extract_lyrics(arr_happy[0], arr_happy[1]) == target
+   ), "Lyrics output incorrect"
 
 
 # Case 2 - empty dataframe
