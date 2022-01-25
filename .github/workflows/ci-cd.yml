@@ -37,7 +37,7 @@ jobs:
       env:
         KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
         KAGGLE_KEY: ${{ secrets.KaggleKey }}
-    # Step 7. Run tests for package
+    # Step 7. Run tests for package 
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pylyrics --cov-report=xml
     # Step 8. Use Codecov to track coverage
