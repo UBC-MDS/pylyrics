@@ -9,6 +9,22 @@ on:
       - main
 
 jobs:
+  build:
+    name: Run Kaggle API Commands
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.6
+        architecture: x64
+    - name: Setup Kaggle
+      run: pip install kaggle
+    
+    
+
+jobs:
   ci:
     # Step 1. Set up operating system
     runs-on: ubuntu-latest
@@ -24,15 +40,21 @@ jobs:
     # Step 5. Install our package
     - name: Install package
       run: poetry install
-    # Step 6. Run tests for package
+    # Step 6. Write kaggle initials to root directory
+    - name: Save kaggle API credentials
+      run: echo "{\"username\": $KAGGLE_USERNAME,\"key\": $KAGGLE_KEY}" > ~/.kaggle/kaggle.json
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
+        KAGGLE_KEY: ${{ secrets.KaggleKey }}
+    # Step 7. Run tests for package
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pylyrics --cov-report=xml
-    # Step 7. Use Codecov to track coverage
+    # Step 8. Use Codecov to track coverage
     - uses: codecov/codecov-action@v2
       with:
         files: ./coverage.xml   # coverage report
         fail_ci_if_error: true  # terminate workflow if there's an error
-    # Step 8. Build documentation
+    # Step 9. Build documentation
     - name: Build documentation
       run: poetry run make html --directory docs/
   cd:
