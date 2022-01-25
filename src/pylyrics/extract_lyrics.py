@@ -49,9 +49,10 @@ def extract_lyrics(song_title, artist):
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="lyrics-root")
-        print("url: " + url)
-        print(page)
+
         if not results:
+            print("url: " + url)
+            print(page)
             raise ValueError("Song not found")
 
         job_elements = results.find_all("span")
