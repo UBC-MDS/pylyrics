@@ -32,7 +32,7 @@ jobs:
     # Step 6. Write kaggle initials to root directory
     - name: Save kaggle API credentials
       run: |
-        mkdir .kaggle
+        mkdir ~/.kaggle
         echo -e '\{"username":{$KAGGLE_USERNAME},"key":{$KAGGLE_KEY}\}' > ~/.kaggle/kaggle.json
       env:
         KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
