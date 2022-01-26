@@ -3,7 +3,7 @@ import json, os
 import pytest
 
 # Skip testing this module if on Github Actions
-ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~user')
+ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~') or 'C:/Users/runner' in os.path.expanduser('~user')
 
 
 # Case 1 - happy case
