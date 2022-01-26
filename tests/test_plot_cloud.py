@@ -5,15 +5,17 @@ from pylyrics import plot_cloud as pc
 import pytest
 import os
 
+# Skip testing this module if on Github Actions
+ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~')  or 'C:\\Users\\runner' in os.path.expanduser('~')
+
 
 @pytest.fixture
 def correct_values():
     song = {"Taylor Swift": "22", "Queen": "Bohemian Rhapsody"}
     file_path = "tests/data/22_BR"
-
     return song, file_path
 
-
+# Testing input values are of correct type
 def test_input_types(correct_values):
     with pytest.raises(TypeError):
         _, file_path = correct_values
@@ -46,8 +48,9 @@ def test_no_lyrics(correct_values):
         pc.plot_cloud(song, file_path)
 
 
+# Testing if an image is saved
+@pytest.mark.skipif(ON_GITHUB_ACTIONS, reason='Requires access to the Genius website.')
 def test_image(correct_values):
-    """Testing if an image is saved"""
-    song, file_path = correct_values
-    pc.plot_cloud(song, file_path)
-    assert os.path.exists(file_path + ".png") == True, "No image has been saved"
+   song, file_path = correct_values
+   pc.plot_cloud(song, file_path)
+   assert os.path.exists(file_path + ".png") == True, "No image has been saved"

@@ -49,7 +49,9 @@ def extract_lyrics(song_title, artist):
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="lyrics-root")
+
         if not results:
+            print("url: " + url)
             raise ValueError("Song not found")
 
         job_elements = results.find_all("span")
@@ -61,5 +63,5 @@ def extract_lyrics(song_title, artist):
         return lyrics
 
     except (ValueError, TypeError) as err:
-        print(err)
+        # print(err)
         raise

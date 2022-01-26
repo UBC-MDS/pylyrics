@@ -3,15 +3,18 @@ name: ci-cd
 on:
   push:
     branches:
-      - main
   pull_request:
     branches:
-      - main
+  # To run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   ci:
     # Step 1. Set up operating system
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest] 
     steps:
     # Step 2. Set up Python 3.9
     - uses: actions/setup-python@v2
@@ -24,9 +27,15 @@ jobs:
     # Step 5. Install our package
     - name: Install package
       run: poetry install
-    # Step 6. Run tests for package
+    # Checking os runner path
+    - name: Check windows runner path
+      run: python -c "import os; print(os.path.expanduser('~'))"
+    # Step 6. Run tests for package 
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pylyrics --cov-report=xml
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
+        KAGGLE_KEY: ${{ secrets.KaggleKey }}
     # Step 7. Use Codecov to track coverage
     - uses: codecov/codecov-action@v2
       with:
