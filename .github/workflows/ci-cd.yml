@@ -29,6 +29,9 @@ jobs:
     # Step 5. Install our package
     - name: Install package
       run: poetry install
+    # Checking windows runner path
+    - name: Check windows runner path
+      run: python -c "import os; print(os.path.expanduser('~'))"
     # Step 6. Run tests for package 
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pylyrics --cov-report=xml
