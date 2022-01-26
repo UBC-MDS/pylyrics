@@ -6,7 +6,7 @@ import pytest
 import os
 
 # Skip testing this module if on Github Actions
-ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~')
+ON_GITHUB_ACTIONS = '/home/runner' in os.path.expanduser('~') or '/Users/runner' in os.path.expanduser('~')  or 'C:\\Users\\runner' in os.path.expanduser('~')
 
 
 @pytest.fixture
