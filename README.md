@@ -59,12 +59,12 @@ The pylyrics packages contains the following four functions:
 - urllib.parse
 - wordcloud
 - matplotlib  
-- ßbeautifulsoup4
+- beautifulsoup4
 
 <br>
 
 ### Usage
----
+The `pylyrics` package is a visual way to find prominent word used in a lyrics. Given a song title and artist's name, this package will show the word that is used most in that lyrics (or a group of lyrics)
 #### Downloading and Selecting
 The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `columns` argument. 
 
@@ -110,7 +110,7 @@ pc.plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color
 
 ### Documentation
 ---
-The official documentation is hosted on Read the Docs: [Link TBC]
+The official documentation is hosted on Read the Docs: [here](https://pylyrics.readthedocs.io/en/latest/)
 
 <br>
 
