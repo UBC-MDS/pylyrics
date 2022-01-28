@@ -55,11 +55,11 @@ The pylyrics packages contains the following four functions:
 ---
 - python = ^3.9
 - pandas = ^1.2.3
-- kaggle
+- kaggle = ^1.5.12
 - urllib.parse
-- wordcloud
-- matplotlib  
-- beautifulsoup4
+- wordcloud = ^1.8.1
+- matplotlib = ^3.5.1
+- beautifulsoup4 = ^4.10.0
 
 <br>
 
