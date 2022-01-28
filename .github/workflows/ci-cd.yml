@@ -60,6 +60,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    
+    # Step 3.5 Write kaggle initials to root directory
+    - name: Save kaggle API credentials
+      run: |
+        mkdir .kaggle
+        echo -e '\{"username":{$KAGGLE_USERNAME},"key":{$KAGGLE_KEY}\}' > ~/.kaggle/kaggle.json
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
+        KAGGLE_KEY: ${{ secrets.KaggleKey }}
     # Step 4. Use PSR to make release
     - name: Python Semantic Release
       run: |
