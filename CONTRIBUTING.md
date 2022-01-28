@@ -41,10 +41,9 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 ## Attribution
 These contributing guidelines are adapted from the [Attribution](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct/)
-## Contacts
 
-1. [Abhiket Gaurav](mailto:p12abhiketg@iimidr.ac.in)
-2. [Artan Zandian](mailto:artanzand@yahoo.co.uk)
-3. [Manju Abhinandana Kumar](mailto:manju.abhinandana@gmail.com)
-4. [Macy Chan](mailto:macychan@student.ubc.ca)
-
+Contacts:
+1. [Abhiket Gaurav](abhiketg@student.ubc.ca)
+2. [Artan Zandian](azandian@student.ubc.ca)
+3. [Manju Abhinandana Kumar](manju2na@student.ubc.ca)
+4. [Macy Chan](macy@student.ubc.ca)

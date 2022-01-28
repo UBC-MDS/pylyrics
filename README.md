@@ -25,7 +25,7 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 ### Our Package in the Python Ecosystem
 ---
-There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are the two examples that come close: [Cloud-Lyrics](https://github.com/lorenza12/Cloud-Lyrics) and [deezer.io](https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4)
+There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are examples that come close: [PyLrics](https://pypi.org/project/PyLyrics/), [Cloud-Lyrics](https://github.com/lorenza12/Cloud-Lyrics) and [deezer.io](https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4)
 
 <br>
 
@@ -55,11 +55,10 @@ The pylyrics packages contains the following four functions:
 ---
 - python = ^3.9
 - pandas = ^1.2.3
-- kaggle
-- urllib.parse
-- wordcloud
-- matplotlib  
-- beautifulsoup4
+- kaggle = ^1.5.12
+- wordcloud = ^1.8.1
+- matplotlib = ^3.5.1
+- beautifulsoup4 = ^4.10.0
 
 <br>
 
