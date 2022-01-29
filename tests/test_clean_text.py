@@ -1,7 +1,7 @@
 # Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
 # January 2022
 
-from pylyrics import clean_text as ct
+from pylyrics2 import clean_text as ct
 import pytest
 
 # Case 1 -happy case

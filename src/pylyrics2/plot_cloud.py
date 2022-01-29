@@ -2,8 +2,8 @@
 # January 2022
 
 
-from pylyrics.extract_lyrics import extract_lyrics
-from pylyrics.clean_text import clean_text
+from pylyrics2.extract_lyrics import extract_lyrics
+from pylyrics2.clean_text import clean_text
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import os
@@ -35,7 +35,7 @@ def plot_cloud(
 
     Example
     -------
-    >>> from pylyrics.pylyrics import plot_cloud
+    >>> from pylyrics2 import plot_cloud
     >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black')
 
     """

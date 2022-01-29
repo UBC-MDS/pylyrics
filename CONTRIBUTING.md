@@ -1,5 +1,5 @@
-# Contributing to the pylyrics project
-Contribution to the project is always welcomed, and appreciated.We learn together right !! This document outlines the way in which one can propose changes/modifications to the  pylyrics project.
+# Contributing to the pylyrics2 project
+Contribution to the project is always welcomed, and appreciated.We learn together right !! This document outlines the way in which one can propose changes/modifications to the  pylyrics2 project.
 
 ## Fixing typo
 Grammatical errors or typos in documentation can be edited directly using the GitHub web interface, so long as the changes are made in the source file.
@@ -9,7 +9,7 @@ Grammatical errors or typos in documentation can be edited directly using the Gi
 Before you make a substantial pull request, you should always report an issue and make sure someone from the team agrees to the change. If you've found a bug, create an associated issue and illustrate the bug with a minimal reprex.
 ## How to Contribute
 
-The pylyrics follows GitHub workflow. The steps we are going to follow to contribute to this project are:
+The pylyrics2 follows GitHub workflow. The steps we are going to follow to contribute to this project are:
 
 - Create a branch.
 - Commit changes.
@@ -17,7 +17,7 @@ The pylyrics follows GitHub workflow. The steps we are going to follow to contri
 - One contributor should check the changes and approve them.
 - Finally, merge the pull request.
 
-However If you are a new contributor to the project, visit : https://github.com/UBC-MDS/pylyrics  and click the 'Fork' icon to get a copy of the project.
+However If you are a new contributor to the project, visit : [pylyrics2](https://github.com/UBC-MDS/pylyrics)  and click the 'Fork' icon to get a copy of the project.
 
 **1. Clone the repository locally:**
 
@@ -43,7 +43,7 @@ Please note that this project is released with a Contributor Code of Conduct. By
 These contributing guidelines are adapted from the [Attribution](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct/)
 
 Contacts:
-1. [Abhiket Gaurav](abhiketg@student.ubc.ca)
-2. [Artan Zandian](azandian@student.ubc.ca)
-3. [Manju Abhinandana Kumar](manju2na@student.ubc.ca)
-4. [Macy Chan](macy@student.ubc.ca)
+1. [Abhiket Gaurav](mailto:abhiketg@student.ubc.ca)
+2. [Artan Zandian](mailto:azandian@student.ubc.ca)
+3. [Manju Abhinandana Kumar](mailto:manju2na@student.ubc.ca)
+4. [Macy Chan](mailto:macy@student.ubc.ca)

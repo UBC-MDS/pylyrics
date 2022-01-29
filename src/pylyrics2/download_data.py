@@ -26,7 +26,7 @@ def download_data(dataset, file_path, columns):
 
     Example
     -------
-    from pylyrics import download_data
+    from pylyrics2 import download_data
     download_data("geomack/spotifyclassification", "data/spotify_attributes", ["song_title", "artist"])
     spotify_df = download_data("geomack/spotifyclassification", "data/spotify_attributes", ["song_title", "artist"])
     """

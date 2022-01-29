@@ -32,7 +32,7 @@ jobs:
       run: python -c "import os; print(os.path.expanduser('~'))"
     # Step 6. Run tests for package 
     - name: Test with pytest
-      run: poetry run pytest tests/ --cov=pylyrics --cov-report=xml
+      run: poetry run pytest tests/ --cov=pylyrics2 --cov-report=xml
       env:
         KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
         KAGGLE_KEY: ${{ secrets.KaggleKey }}
@@ -123,7 +123,7 @@ jobs:
           pip install \
           --index-url https://test.pypi.org/simple/ \
           --extra-index-url https://pypi.org/simple \
-          pylyrics
+          pylyrics2
           
     # Step 12. Publish to PyPI
     - uses: pypa/gh-action-pypi-publish@release/v1
