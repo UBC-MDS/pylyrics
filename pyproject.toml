@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pylyrics"
+name = "pylyrics2"
 version = "1.0.1"
 description = "This package helps you extract and analyse lyrics like a piece of cake!"
 authors = ["Group 2"]
