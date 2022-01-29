@@ -63,5 +63,4 @@ def extract_lyrics(song_title, artist):
         return lyrics
 
     except (ValueError, TypeError) as err:
-        # print(err)
         raise

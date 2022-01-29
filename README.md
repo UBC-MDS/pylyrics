@@ -1,4 +1,4 @@
-# pylyrics  
+# pylyrics2  
 A Python package to extract and analyze lyrics
 
 -   Authors: Abhiket Gaurav, Artan Zandian, Macy Chan, Manju Abhinandana Kumar
@@ -25,7 +25,7 @@ This package allows users to extract and analyze lyrics effortlessly. With pylri
 
 ### Our Package in the Python Ecosystem
 ---
-There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are examples that come close: [PyLrics](https://pypi.org/project/PyLyrics/), [Cloud-Lyrics](https://github.com/lorenza12/Cloud-Lyrics) and [deezer.io](https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4)
+There exist similar packages Python. However, this package is more holistic, in the sense that it downloads the lyrics through APIs, cleans the text, and then makes the word cloud. There are packages which does one of these steps. This package takes care of all the steps. Of the many other similar packages, the following are examples that come close: [PyLyrics](https://pypi.org/project/PyLyrics/), [Cloud-Lyrics](https://github.com/lorenza12/Cloud-Lyrics) and [deezer.io](https://deezer.io/a-new-way-to-look-at-an-artist-from-lyrics-to-wordclouds-christmas-special-56a854cb4e77#.op1gx82h4)
 
 <br>
 
@@ -39,7 +39,7 @@ $ pip install git+https://github.com/UBC-MDS/pylyrics
 
 ### Features
 ---
-The pylyrics packages contains the following four functions:  
+The `pylyrics2` packages contains the following four functions:  
 
 1. `download_data()` The download data function downloads dataset from Kaggle, extracts the given columns from csv file and creates a dataframe.
 
@@ -63,14 +63,14 @@ The pylyrics packages contains the following four functions:
 <br>
 
 ### Usage
-The `pylyrics` package is a visual way to find prominent word used in a lyrics. Given a song title and artist's name, this package will show the word that is used most in that lyrics (or a group of lyrics)
+The `pylyrics2` package is a visual way to find prominent word used in a lyrics. Given a song title and artist's name, this package will show the word that is used most in that lyrics (or a group of lyrics)
 #### Downloading and Selecting
 The first function in our package is the `download_data()`. Here you will input your `kaggle dataset` and the columns to be extracted into a Pandas DataFrame with `columns` argument. 
 
 To use the Kaggle API, sign up for a Kaggle account at [Kaggle](https:/www.kaggle.com). Then go to the 'Account' tab of your user profile (https://www.kaggle.com/<username\>/account) and select 'Create API Token'. This will trigger the download of kaggle.json, a file containing your API credentials. Place this file in the location `~/.kaggle/kaggle.json`. The function will automatically read your Kaggle credentials from the above path.
   
 ```python 
-from pylyrics import download_data as dd
+from pylyrics2 import download_data as dd
 # Example dataset: Spotify Song Attributes  
 dataset = "geomack/spotifyclassification"
 file_path = "data/spotify_attributes"
@@ -82,14 +82,14 @@ dd.download_data(dataset, "data/spotify_attributes", ["song_title", "artist"])
 The `extract_lyrics()` function gets the `song_title` and `artist` name, checks validity and avialability of the combination, and extracts the lyrics for that song in a raw string format with header, footer etc which needs to be cleaned in order to create a human-readable text.  
 
 ```python 
-from pylyrics import extract_lyrics as el
+from pylyrics2 import extract_lyrics as el
 # extracting lyrics 
 raw_lyrics = el.extract_lyrics("22", "Taylor Swift")
 ```
 #### Cleaning
 Our `clean_text()` function is straightforward. It turns the raw lyrics into a human-readable text.
 ```python 
-from pylyrics import clean_text as ct
+from pylyrics2 import clean_text as ct
 # Clean the extracted raw lyrics (text)
 clean_lyrics = ct.clean_text(lyrics)
 ```
@@ -98,7 +98,7 @@ clean_lyrics = ct.clean_text(lyrics)
 WordCloud is an artistic rendering of the most frequent words in a text document. A higher occurrence for a word is translated into a larger text size.  
 At this stage, we have helper functions to facilitate the extraction and cleaning of lyrics. The `plot_cloud()` function accepts a **dictionary** with `artist` as dictionary key and `song_title` as values. It will then extract the lyrics for all songs in the dictionary and saves a WordCould of the most occurring terms in the `file_path` provided by the user. The WordClould parameters to be set are self-explanatory: `max_font_size`, `max_word` and `background_color`.
 ```python 
-from pylyrics import plot_cloud as pc
+from pylyrics2 import plot_cloud as pc
 # plotting and saving WordCloud
 song = { "Taylor Swift": "all too well", "Adele" : "Hello" }
 file_path = "data/wordcloud"
@@ -128,8 +128,8 @@ We welcome and recognize all contributions. Check out the contributing guideline
 
 ### License
 
-`pylyrics` was created by Group 2. It is licensed under the terms of the MIT license.
+`pylyrics2` was created by Group 2. It is licensed under the terms of the MIT license.
 
 ### Credits
 
-`pylyrics` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`pylyrics2` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
