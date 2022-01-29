@@ -1,5 +1,9 @@
 # pylyrics2  
-[![codecov](https://codecov.io/gh/UBC-MDS/pylyrics/branch/master/graph/badge.svg?token=pjbS2ZPk2h)](https://codecov.io/gh/UBC-MDS/pylyrics) [![ci-cd](https://github.com/UBC-MDS/pylyrics/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/UBC-MDS/pylyrics/actions/workflows/ci-cd.yml)
+[![ci-cd](https://github.com/UBC-MDS/pylyrics/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/UBC-MDS/pylyrics/actions/workflows/ci-cd.yml)
+[![Documentation Status](https://readthedocs.org/projects/pylyrics/badge/?version=latest)](https://pylyrics.readthedocs.io/en/latest/?badge=latest)
+[![codecov](https://codecov.io/gh/UBC-MDS/pylyrics/branch/master/graph/badge.svg?token=pjbS2ZPk2h)](https://codecov.io/gh/UBC-MDS/pylyrics) 
+
+      
 
 A Python package to extract and analyze lyrics
 
