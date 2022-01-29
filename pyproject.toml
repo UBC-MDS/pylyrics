@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pylyrics"
-version = "0.1.0"
-description = "This package hehelps you extract and analyse lyrics like a piece of cake!"
+version = "1.0.1"
+description = "This package helps you extract and analyse lyrics like a piece of cake!"
 authors = ["Group 2"]
 license = "MIT"
 readme = "README.md"
@@ -20,6 +20,7 @@ pytest-cov = "^3.0.0"
 myst-nb = "^0.13.1"
 sphinx-autoapi = "^1.8.4"
 sphinx-rtd-theme = "^1.0.0"
+python-semantic-release = "^7.24.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
