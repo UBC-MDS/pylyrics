@@ -35,9 +35,8 @@ def plot_cloud(
 
     Example
     -------
-    >>> song = { "Taylor Swift": "22", "Queen" : "Bohemian Rhapsody" }
-    >>> file_path = "data/wordcloud"
-    >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black', show=True)
+    >>> from pylyrics.pylyrics import plot_cloud
+    >>> plot_cloud(song, file_path, max_font_size=30, max_words=100, background_color='black')
 
     """
     try:
@@ -69,7 +68,6 @@ def plot_cloud(
 
         plt.imshow(wordcloud, interpolation="antialiased")
         plt.axis("off")
-        plt.show()
 
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
