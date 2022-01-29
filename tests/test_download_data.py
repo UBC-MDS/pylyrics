@@ -1,4 +1,4 @@
-from pylyrics import download_data as dd
+from pylyrics2 import download_data as dd
 import pandas as pd
 import pytest
 import os

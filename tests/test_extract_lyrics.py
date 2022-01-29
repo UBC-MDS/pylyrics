@@ -1,5 +1,5 @@
-from pylyrics import extract_lyrics as pl
-import json, os
+from pylyrics2 import extract_lyrics as pl
+import os
 import pytest
 
 # Skip testing this module if on Github Actions
