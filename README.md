@@ -6,7 +6,7 @@ A Python package to extract and analyze lyrics
 <br>
 
 ### Overview
-This package allows users to extract and analyze lyrics effortlessly. With pylrics users can download songs attribute datasets from Kaggle, extract lyrics and generate a word cloud. 
+This package allows users to extract and analyze lyrics effortlessly. With pylyrics2 users can download songs attribute datasets from Kaggle, extract lyrics and generate a word cloud. 
 
 <br>
 
@@ -91,7 +91,7 @@ Our `clean_text()` function is straightforward. It turns the raw lyrics into a h
 ```python 
 from pylyrics2 import clean_text as ct
 # Clean the extracted raw lyrics (text)
-clean_lyrics = ct.clean_text(lyrics)
+clean_lyrics = ct.clean_text(raw_lyrics)
 ```
 
 #### Creating WordCloud
