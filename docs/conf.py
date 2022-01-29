@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"pylyrics"
+project = u"pylyrics2"
 copyright = u"2022, Group 2"
 author = u"Group 2"
 
