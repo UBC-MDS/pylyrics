@@ -32,7 +32,7 @@ There exist similar packages Python. However, this package is more holistic, in 
 ### Installation
 ---
 ```bash
-$ pip install git+https://github.com/UBC-MDS/pylyrics
+$ pip install pylyrics2
 
 ```
 <br>
