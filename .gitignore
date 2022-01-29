@@ -140,4 +140,3 @@ dmypy.json
 
 # MacOS
 .DS_Store
-src/pylyrics/data/credentials.json
