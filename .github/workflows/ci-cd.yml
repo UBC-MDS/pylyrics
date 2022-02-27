@@ -72,13 +72,13 @@ jobs:
       run: poetry install     
         
     # Step 6. Turn off branch protection
-    - name: Disable admin branch protection
-      uses: benjefferies/branch-protection-bot@master
-      if: always()
-      with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: main
-          enforce_admins: false 
+#    - name: Disable admin branch protection
+#      uses: benjefferies/branch-protection-bot@master
+#      if: always()
+#      with:
+#          access_token: ${{ secrets.ACCESS_TOKEN }}
+#          branch: main
+#          enforce_admins: false 
     
     # Step 7. Bump version and tagging
     - name: Bump version and tagging and publish
@@ -96,13 +96,13 @@ jobs:
         github_token: ${{ secrets.ACCESS_TOKEN }}
         
     # Step 8. Turn on branch protection
-    - name: Enable admin branch protection
-      uses: benjefferies/branch-protection-bot@master
-      if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
-      with:
-        access_token: ${{ secrets.ACCESS_TOKEN }}
-        branch: main
-        enforce_admins: true
+#    - name: Enable admin branch protection
+#      uses: benjefferies/branch-protection-bot@master
+#      if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
+#      with:
+#        access_token: ${{ secrets.ACCESS_TOKEN }}
+#        branch: main
+#        enforce_admins: true
     
     # Step 9. Build package    
     - name: Build package and publish to test PyPI
