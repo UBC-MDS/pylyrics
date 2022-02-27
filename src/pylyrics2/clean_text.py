@@ -48,10 +48,10 @@ def clean_text(text, bool_contra_dict=True):
                 "'re": " are",
             }
 
-        for key, value in contra_dict.items():
-            if key in text:
-                text = text.replace(key, value)
-            # lower case and remove special characters
+            for key, value in contra_dict.items():
+                if key in text:
+                    text = text.replace(key, value)
+                # lower case and remove special characters
         text = re.sub(r"[^a-zA-Z\s]", "", text, re.I | re.A)
         text = re.sub(r"https?:\/\/.\S+", "", text)
         text = re.sub(r"#", "", text)
